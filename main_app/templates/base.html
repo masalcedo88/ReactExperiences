@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="{%static 'css/tunr.css' %}" />
-    <title>Tunr</title>
+    <title>Adventure Buddy</title>
   </head>
   <body>
     <h1><a href="http://localhost:8000">Adventure Buddy</a></h1>
     <nav>
       {% if user.is_authenticated %} Welcome {{ user.username }}
-      <a href="/">Experiences</a>
-      <a href="/accounts/profile">Profile</a>
+      <a href="/">Adventures</a>
+      <a href="/profile">Profile</a>
       <a href="/accounts/logout">Logout</a>
       {% else %}
       <a href="/">Experiences</a>
