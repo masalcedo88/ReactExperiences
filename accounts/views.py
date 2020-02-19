@@ -27,7 +27,7 @@ def signup(request):
           first_name=first_name, 
           last_name=last_name)
         user.save()
-        return redirect('artist_list')
+        return redirect('adventure_list')
     else:
       context = {'error':'Passwords do not match'}
       return render(request, 'signup.html', context)
@@ -54,3 +54,5 @@ def login(request):
 def logout(request):
   auth.logout(request)
   return redirect('index')
+
+# def profile(request)
