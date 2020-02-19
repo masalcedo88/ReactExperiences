@@ -6,7 +6,7 @@ class Adventure(models.Model):
   creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name="adventures")
   title = models.CharField(max_length=100)
   description = models.TextField()
-  price = models.DecimalField(max_digits=10, decimal_places=2)
+  price = models.DecimalField(max_digits=8, decimal_places=2)
   picture = models.TextField()
   location = models.CharField(max_length=250)
   date = models.DateField()
