@@ -44,7 +44,7 @@ def login(request):
       # login
       auth.login(request, user)
       #redirect
-      return redirect('artist_list')
+      return redirect('/')
     else:
       context = {'error':'Invalid Credentials'}
       return render(request, 'login.html', context)
