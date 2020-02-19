@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 
 # Create your views here.
-def register(request):
+def signup(request):
   if request.method == "POST":
     first_name = request.POST['first_name']
     last_name = request.POST['last_name']
@@ -14,11 +14,11 @@ def register(request):
     if password == password2:
       if User.objects.filter(username=username_form).exists():
         context = {'error': 'Username is already taken.'}
-        return render(request, 'register.html', context)
+        return render(request, 'signup.html', context)
       else:
         if User.objects.filter(email=email_form).exists():
           context = {'error':'That email already exists.'}
-          return render(request, 'register.html', context)
+          return render(request, 'signup.html', context)
         else: 
           user = User.objects.create_user(
           username=username_form, 
@@ -30,9 +30,9 @@ def register(request):
         return redirect('artist_list')
     else:
       context = {'error':'Passwords do not match'}
-      return render(request, 'register.html', context)
+      return render(request, 'signup.html', context)
   else:
-    return render(request, 'register.html')
+    return render(request, 'signup.html')
 
 def login(request):
   if request.method == 'POST':
@@ -53,4 +53,4 @@ def login(request):
 
 def logout(request):
   auth.logout(request)
-  return redirect('artist_list')
+  return redirect('index')
