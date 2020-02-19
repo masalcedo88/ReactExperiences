@@ -19,7 +19,7 @@ class Adventure(models.Model):
 class Booking(models.Model):
   adventure = models.ForeignKey(Adventure, on_delete=models.CASCADE, related_name="bookings")
   customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookings")
-  date_booked = models.DateField()
+  date_booked = models.DateField(auto_now_add=True)
   confirmed = models.BooleanField(default=False)
   
   def __str__(self):
