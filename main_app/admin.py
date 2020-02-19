@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Experience, Booked
+from .models import Adventure, Booking
 # Register your models here.
-admin.site.register(Experience)
-admin.site.register(Booked)
+admin.site.register(Adventure)
+admin.site.register(Booking)
