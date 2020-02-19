@@ -1,5 +1,4 @@
 # adventureBuddy
-adventureBUDDY
 
 AdventureBUDDY is a service that connects adventurers with adventures. Users can search and sign up for adventures with a new buddy. Buddies can monetize their adventure knowledge by creating events for other users to join.
 
@@ -17,30 +16,41 @@ USER PROFILE - the user profile contains multiple tabs that provide different in
  - User info - contains all information regarding the current session user as well as an edit button to update the info or change their password.
  - Create post - A signed in user can create a new experience that other users can book.
  
-ADVENTURE DETAIL - an expanded view of the adventure cards, featuring more details about the event and the ability to book it. Booking an adventure takes the user to their profile’s Booked gallery. When the user clicks on a booked adventure, the ability to cancel replaces the Book option. 
+## ADVENTURE DETAIL
+An expanded view of the adventure cards, featuring more details about the event and the ability to book it. Booking an adventure takes the user to their profile’s Booked gallery. When the user clicks on a booked adventure, the ability to cancel replaces the Book option. 
 
-TECHNICAL REQUIREMENTS
+## TECHNICAL REQUIREMENTS
 
-CRUD
+## CRUD
 C - CREATE users, experiences, and bookings
 R - READ users, experiences, and bookings
 U - UPDATE users, experiences, and bookings
 D - DESTROY users, experiences, and bookings
 
-Technologies:
-Python/Django
-Postgres SQL
-4 data models
-User login and authentication
-with data validation and error handling
-Views
-Semantic UI
-Responsive UI optimized for phone/tablet
+## TECHNOLOGIES
+- Python/Django
+- Postgres SQL
+- 4 data models
+- User login and authentication
+    - with data validation and error handling
+- Views
+- Semantic UI
+- Responsive UI optimized for phone/tablet
 
 
-STRETCH GOALS
+## STRETCH GOALS
 
-Use Stripe API for payments
-Notifications
+- Use Stripe API for payments
+- Email notifications
 
+## MILESTONES
+Tuesday - Set up Django/SQL/base template (E/M)
+Tuesday - Build seed file for DB. (R)
+Wednesday - User & Experience Model, and Routes (M)
+Wednesday - Login/signup/logout w/ authentication (E)
+Thursday - Fully functioning landing page with experience rendering and search* functionality (R/M)
+Friday - Fully functioning profile page (see your bookings, your offered experiences) (E/R)
+Full CRUD MVP by Friday (E/M/R)
+
+*stretchy
 
