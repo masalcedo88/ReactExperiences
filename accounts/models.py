@@ -4,3 +4,4 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile')
   picture_url = models.TextField()
+  interests = models.TextField()
