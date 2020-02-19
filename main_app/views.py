@@ -15,11 +15,17 @@ def profile(request):
 @login_required
 def adventure_create(request):
     if request.method == 'POST':
-        form = AdventureForm(request.POST)
-        if form.is_valid():
-            adventure = form.save()
-            return redirect('profile', pk=adventure.pk)
+      form = AdventureForm(request.POST)
+      if form.is_valid():
+        adventure = form.save(commit=False)
+        adventure.creator = request.user
+        adventure.save()
+        return redirect('profile', pk=adventure.pk)
     else:
         form = AdventureForm()
     context = {'form': form, 'header': "Add New Adventure"}
     return render(request, 'adventure_form.html', context)
+
+@login_required
+def adventures_list(request):
+  return render(request, 'my_adventures.html')
