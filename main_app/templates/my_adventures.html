@@ -8,6 +8,15 @@
 <h5>These are {{ user.username }}'s adventures!</h5>
 <a href="#">Adventures Booked</a>
 <a href="#">Adventures Offered</a>
+<ul>
+    {% for adventure in adventures %}
+    <li class="experience">
+        <a href="#">
+            {{ adventure.title }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
 
 
 {% endblock %}

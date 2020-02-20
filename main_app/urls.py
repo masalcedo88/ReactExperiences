@@ -6,4 +6,5 @@ urlpatterns = [
   path('profile', views.profile, name='profile'),
   path('new_adventure', views.adventure_create, name='adventure_create'),
   path('my_adventures', views.adventures_list, name='adventures_list'),
+  path('adventures/<int:pk>', views.adventure_detail, name='adventure_detail'),
 ]
