@@ -7,12 +7,13 @@ from .forms import AdventureForm, BookingForm
 
 
 def index(request):
-  adventures = Adventure.objects.all()  
+  # adventures = Adventure.objects.exclude(id__in=Booking.objects.filter(adventure=None))
+  adventures = Adventure.objects.all()
   return render(request, 'index.html', {'adventures': adventures})
 
 def adventure_detail(request, pk):
-    adventure = Adventure.objects.get(id=pk)
-    return render(request, 'adventure_detail.html', {'adventure': adventure})
+  adventure = Adventure.objects.get(id=pk)
+  return render(request, 'adventure_detail.html', {'adventure': adventure})
 
 @login_required
 def profile(request):
@@ -28,7 +29,7 @@ def adventure_create(request):
         adventure.save()
         return redirect('profile')
     else:
-        form = AdventureForm()
+      form = AdventureForm()
     context = {'form': form, 'header': "Add New Adventure"}
     return render(request, 'adventure_form.html', context)
 
@@ -38,16 +39,7 @@ def adventures_list(request):
 
 @login_required
 def book_adventure(request, pk):
-    # if request.method == 'POST':
-    #   form = BookingForm(request.POST)
-    #   if form.is_valid():
-    #     booking = form.save(commit=False)
-    customer = request.user
-    adventure = Adventure.objects.get(pk=pk)
-    booking = Booking.objects.create(customer=customer, adventure=adventure)
-    # booking.save()
-    return redirect('profile')
-    # else:
-    #     form = BookingForm()
-    # context = {'form': form, 'header': "Add New Booking"}
-    # return render(request, 'adventure_detail.html', context)
+  customer = request.user
+  adventure = Adventure.objects.get(pk=pk)
+  booking = Booking.objects.create(customer=customer, adventure=adventure)
+  return redirect('profile')
