@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Welcome to Adventure Buddy</h1>
+<h1>Welcome to adventureBUDDY</h1>
 <p>I am a homepage :)</p>
 <small>please, style me</small>
+
+<ul>
+    {% for adventure in adventures %}
+    <li class="experience">
+        <a href="{% url 'adventure_detail' pk=adventure.pk %}">
+            {{ adventure.title }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
 {% endblock %}

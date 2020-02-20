@@ -3,7 +3,7 @@
 {% block content %}
     <section class="form-section">
         <h1>{{header}}</h1>
-        <form  method="POST" class="song-form">
+        <form  method="POST" class="adventure-form">
             {% csrf_token %}
             {{form.as_p}}
             <button type="submit">Save</button>
