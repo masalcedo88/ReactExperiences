@@ -4,6 +4,7 @@
 <section class="adventure-header">
 	<section class="adventure-info">
     <h2>{{ adventure.title }}</h2>
+    <img src="{{ adventure.picture }}" alt="">
     <h5>{{ adventure.pk }}</h5>
     <p>{{ adventure.description }}</p>
     <a href="{% url 'book_adventure' pk=adventure.pk %}">Book this adventure!</a>
