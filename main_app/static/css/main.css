@@ -1,3 +1,25 @@
-* {
-  background-color: aqua;
+:root {
+  --bg_dark: #06052c;
+  --bg_dark_btn: #00b399;
+  --tab_label: #3d1fe2;
+  --tab_label_active: #150259;
+  --text_contrast: #ff6356;
+  --text_body_dark: #483b60;
+  --text_header_dark: #190036;
+}
+body {
+  padding: 0 10px;
+}
+
+nav {
+  background-color: var(--bg_dark);
+  /* padding: 0px 5px; */
+  border-radius: 2.5px;
+}
+#welcome {
+  color: var(--text_contrast);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  height: 100%;
 }
