@@ -6,39 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- external JS   ————————————————————————————————————————-->
-    <script defer src="{%static 'vendors/semantic.js'%}"></script>
     <script
       defer
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
     ></script>
-    <!-- internal CSS  ————————————————————————————————————————-->
-    <link rel="stylesheet" href="{%static 'css/main.css' %}" />
+    <script defer src="{%static 'vendors/semantic.js'%}"></script>
+    <!-- internal JS   ————————————————————————————————————————-->
+    <script defer src="{%static 'js/main.js' %}"></script>
     <!-- external CSS  ————————————————————————————————————————-->
     <link rel="stylesheet" href="{%static 'vendors/semantic.css' %}" />
+    <!-- internal CSS  ————————————————————————————————————————-->
+    <link rel="stylesheet" href="{%static 'css/main.css' %}" />
     <title>adventureBUDDY</title>
   </head>
+
   <body>
-    <header>
-      <h1><a href="http://localhost:8000">adventureBUDDY</a></h1>
+    <main>
+      <h1>
+        <a href="/">adventureBUDDY</a>
+      </h1>
       <nav>
-        {% if user.is_authenticated %} Welcome {{ user.username }}
-        <div class="ui right floated inverted menu">
-          <a class="ui header item" href="http://localhost:8000"
-            >adventureBUDDY</a
-          >
-          <a class="ui item" href="/my_adventures">My Adventures</a>
-          <a class="ui item" href="/profile">Profile</a>
-          <a class="ui item" href="/accounts/logout">Logout</a>
+        <div class="ui container">
+          <div class="ui grid">
+            <div class="ui fluid two column row">
+              {% if user.is_authenticated %}
+              <div id="welcome" class="left floated column welcome">
+                <h2>
+                  Welcome, {{ user.first_name }}!
+                </h2>
+              </div>
+              <div class="column">
+                <div class="ui right floated menu">
+                  <a class="ui item header" href="/">adventureBUDDY</a>
+                  <a class="ui item" href="/my_adventures">My Adventures</a>
+                  <a class="ui item" href="/profile">Profile</a>
+                  <a class="ui item" href="/accounts/logout">Logout</a>
+                </div>
+              </div>
+              {% else %}
+              <div id="welcome" class="left floated column welcome">
+                <h2>
+                  Welcome - please log in or sign up!
+                </h2>
+              </div>
+              <div class="ui right floated menu">
+                <a class="ui item header" href="/">adventureBUDDY</a>
+                <a class="ui item" href="/">Adventures</a>
+                <a class="ui item" href="/accounts/signup">SignUp</a>
+                <a class="ui item" href="/accounts/login">Login</a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
         </div>
-        {% else %}
-        <div class="ui menu">
-          <a class="ui item" href="/">Adventures</a>
-          <a class="ui item" href="/accounts/signup">SignUp</a>
-          <a class="ui item" href="/accounts/login">Login</a>
-        </div>
-        {% endif %}
       </nav>
-    </header>
-    {% block content %} {% endblock %}
+      {% block content %} {% endblock %}
+    </main>
   </body>
 </html>
