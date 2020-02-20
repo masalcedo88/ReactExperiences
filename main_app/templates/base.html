@@ -28,9 +28,9 @@
       <nav>
         <div class="ui container">
           <div class="ui grid">
-            <div class="ui fluid two column row">
+            <div class="ui two column row">
               {% if user.is_authenticated %}
-              <div id="welcome" class="left floated column welcome">
+              <div id="welcome" class="column welcome">
                 <h2>
                   Welcome, {{ user.first_name }}!
                 </h2>
@@ -44,12 +44,12 @@
                 </div>
               </div>
               {% else %}
-              <div id="welcome" class="left floated column welcome">
+              <div id="welcome" class="column welcome">
                 <h2>
                   Welcome - please log in or sign up!
                 </h2>
               </div>
-              <div class="ui right floated menu">
+              <div class="ui menu">
                 <a class="ui item header" href="/">adventureBUDDY</a>
                 <a class="ui item" href="/">Adventures</a>
                 <a class="ui item" href="/accounts/signup">SignUp</a>
