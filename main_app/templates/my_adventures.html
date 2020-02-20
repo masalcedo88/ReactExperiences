@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Welcome {{ user.username }}</h1>
+<a href="profile">Account Info</a>
+<a href="my_adventures">My Adventures</a>
+<a href="new_adventure">Create Adventure</a>
+<h5>These are {{ user.username }}'s adventures!</h5>
+<a href="#">Adventures Booked</a>
+<a href="#">Adventures Offered</a>
+<ul>
+    {% for adventure in adventures %}
+    <li class="experience">
+        <a href="#">
+            {{ adventure.title }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

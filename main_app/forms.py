@@ -31,3 +31,8 @@ class AdventureFormNew(forms.Form):
     picture = forms.CharField()
     location = forms.CharField(label='')
     date = forms.DateField()
+
+class BookingForm(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = ()
