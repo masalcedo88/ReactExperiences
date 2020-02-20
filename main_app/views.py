@@ -22,7 +22,7 @@ def profile(request):
 @login_required
 def adventure_create(request):
     if request.method == 'POST':
-      form = AdventureForm(request.POST)
+      form = AdventureForm(request.POST, request.FILES)
       if form.is_valid():
         adventure = form.save(commit=False)
         adventure.creator = request.user
