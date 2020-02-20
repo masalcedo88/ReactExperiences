@@ -6,6 +6,7 @@
         <form  method="POST" class="adventure-form">
             {% csrf_token %}
             {{form.as_p}}
+            {{AdventureFormNew.form}}
             <button type="submit">Save</button>
         </form>
     </section>

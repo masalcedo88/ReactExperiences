@@ -8,7 +8,7 @@ class Adventure(models.Model):
   title = models.CharField(max_length=100)
   description = models.TextField()
   price = models.DecimalField(max_digits=8, decimal_places=2)
-  picture = models.TextField()
+  picture = models.ImageField()
   location = models.CharField(max_length=250)
   date = models.DateField()
 
