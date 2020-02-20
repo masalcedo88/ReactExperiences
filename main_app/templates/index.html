@@ -7,11 +7,13 @@
 
 <ul>
     {% for adventure in adventures %}
-    <li class="experience">
-        <a href="{% url 'adventure_detail' pk=adventure.pk %}">
-            {{ adventure.title }}
-        </a>
-    </li>
+        {% if not adventure.bookings.all %}
+        <li class="experience">
+            <a href="{% url 'adventure_detail' pk=adventure.pk %}">
+                {{ adventure.title }}
+            </a>
+        </li>
+        {% endif %}
     {% endfor %}
 </ul>
 
