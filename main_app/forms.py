@@ -6,16 +6,15 @@ class DateInput(forms.DateInput):
     input_type = 'date'
 
 class AdventureForm(forms.ModelForm):
+    picture = forms.ImageField(required=False)
     class Meta:
         # my_date_field = forms.DateField()
         model = Adventure
         widgets = {
             'date': DateInput(),
             # 'picture': ImageField()
-        
         }
         fields = [
-            # 'creator',
             'title',
             'description',
             'price',
