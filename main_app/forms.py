@@ -5,3 +5,8 @@ class AdventureForm(forms.ModelForm):
     class Meta:
         model = Adventure
         fields = ('title', 'description', 'price', 'picture', 'location', 'date')
+
+class BookingForm(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = ()
