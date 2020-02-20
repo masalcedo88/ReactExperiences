@@ -12,11 +12,11 @@
     <h1><a href="http://localhost:8000">adventureBUDDY</a></h1>
     <nav>
       {% if user.is_authenticated %} Welcome {{ user.username }}
-      <a href="/">Adventures</a>
+      <a href="/my_adventures">My Adventures</a>
       <a href="/profile">Profile</a>
       <a href="/accounts/logout">Logout</a>
       {% else %}
-      <a href="/">Experiences</a>
+      <a href="/">Adventures</a>
       <a href="/accounts/signup">SignUp</a>
       <a href="/accounts/login">Login</a>
       {% endif %}
