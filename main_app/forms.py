@@ -15,7 +15,7 @@ class AdventureForm(forms.ModelForm):
         
         }
         fields = [
-            'creator',
+            # 'creator',
             'title',
             'description',
             'price',
