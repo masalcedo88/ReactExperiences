@@ -22,38 +22,41 @@
 
   <body>
     <main>
-      <h1>
-        <a href="/">adventureBUDDY</a>
-      </h1>
+      <header>
+        <div class="spacer"></div>
+        <h1><a href="/">adventureBUDDY</a></h1>
+      </header>
       <nav>
-        <div class="ui container">
+        <div class="ui fluid container">
           <div class="ui grid">
-            <div class="ui two column row">
+            <div class="ui stackable two column row">
               {% if user.is_authenticated %}
-              <div id="welcome" class="column welcome">
+              <div id="welcome" class="left floated column welcome">
                 <h2>
                   Welcome, {{ user.first_name }}!
                 </h2>
               </div>
               <div class="column">
                 <div class="ui right floated menu">
-                  <a class="ui item header" href="/">adventureBUDDY</a>
-                  <a class="ui item" href="/my_adventures">My Adventures</a>
-                  <a class="ui item" href="/profile">Profile</a>
-                  <a class="ui item" href="/accounts/logout">Logout</a>
+                  <a class="item header" href="/">adventureBUDDY</a>
+                  <a class="item" href="/my_adventures">My Adventures</a>
+                  <a class="item" href="/profile">Profile</a>
+                  <a class="item" href="/accounts/logout">Logout</a>
                 </div>
               </div>
               {% else %}
-              <div id="welcome" class="column welcome">
+              <div id="welcome" class="left floated column welcome">
                 <h2>
                   Welcome - please log in or sign up!
                 </h2>
               </div>
-              <div class="ui menu">
-                <a class="ui item header" href="/">adventureBUDDY</a>
-                <a class="ui item" href="/">Adventures</a>
-                <a class="ui item" href="/accounts/signup">SignUp</a>
-                <a class="ui item" href="/accounts/login">Login</a>
+              <div class="column">
+                <div class="ui right floated menu">
+                  <a class="item header" href="/">adventureBUDDY</a>
+                  <a class="item" href="/">Adventures</a>
+                  <a class="item" href="/accounts/signup">SignUp</a>
+                  <a class="item" href="/accounts/login">Login</a>
+                </div>
               </div>
               {% endif %}
             </div>

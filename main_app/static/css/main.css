@@ -13,7 +13,7 @@ body {
 
 nav {
   background-color: var(--bg_dark);
-  /* padding: 0px 5px; */
+  padding: 0px 15px;
   border-radius: 2.5px;
 }
 #welcome {
