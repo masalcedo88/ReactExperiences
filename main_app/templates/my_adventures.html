@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h1>Welcome {{ user.username }}</h1>
-<a href="profile">Account Info</a>
-<a href="my_adventures">My Adventures</a>
-<a href="new_adventure">Create Adventure</a>
-<h5>These are {{ user.username }}'s adventures!</h5>
-<a href="my_adventures">Adventures Booked</a>
-<a href="adventures_offered" id="adventures-offered">Adventures Offered</a>
-<h1>HELLO</h1>
-<ul id="adventures-list">
+<section class="page_content">
+    <a href="profile">Account Info</a>
+    <a href="my_adventures">My Adventures</a>
+    <a href="new_adventure">Create Adventure</a>
+  <div class="ui top attached two item menu">
+    <a class="item" href="adventures_offered">Adventures I'm Offering</a>
+    <a class="item active" href="my_adventures">Adventures I've Booked</a>
+  </div>
+</div>
+  <div class="ui bottom attached segment">
     {% for book in bookings %}
-        <li class="experience">
-            <a href="{% url 'adventure_detail' pk=book.adventure.pk %}">
-                <h2>{{ book.adventure.title }}</h2>
-            </a><br>
-            <a href="{% url 'cancel_booking' pk=book.pk %}">Cancel Booking</a>
-        </li>
+      <div class="ui segment">
+        <a href="{% url 'adventure_detail' pk=book.adventure.pk %}">
+          <h2>{{ book.adventure.title }}</h2>
+        </a>
+        <a class="ui button red" href="{% url 'cancel_booking' pk=book.pk %}">Cancel Booking</a>
+      </div>  
     {% endfor %}
-</ul>
+  </div>
+</section>
 {% endblock %}
