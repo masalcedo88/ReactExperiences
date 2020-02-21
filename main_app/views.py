@@ -5,9 +5,7 @@ from .forms import AdventureForm, BookingForm
 
 # Create your views here.
 
-
 def index(request):
-  # adventures = Adventure.objects.exclude(id__in=Booking.objects.filter(adventure=None))
   adventures = Adventure.objects.all()
   return render(request, 'index.html', {'adventures': adventures})
 
@@ -35,7 +33,6 @@ def adventure_create(request):
 
 @login_required
 def adventures_list(request):
-  # adventures = Adventure.objects.all()
   bookings = Booking.objects.filter(customer=request.user)
   return render(request, 'my_adventures.html', {'bookings': bookings})
 
@@ -50,3 +47,8 @@ def book_adventure(request, pk):
   adventure = Adventure.objects.get(pk=pk)
   booking = Booking.objects.create(customer=customer, adventure=adventure)
   return redirect('profile')
+
+@login_required
+def cancel_booking(request, pk):
+  Booking.objects.get(id=pk).delete()
+  return redirect('adventures_list')
