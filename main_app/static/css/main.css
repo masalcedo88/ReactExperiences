@@ -1,20 +1,73 @@
 :root {
+  --bg_light: #f0f0f0;
   --bg_dark: #06052c;
   --bg_dark_btn: #00b399;
-  --tab_label: #3d1fe2;
+  --tab_label: #296dcf;
   --tab_label_active: #150259;
   --text_contrast: #ff6356;
   --text_body_dark: #483b60;
   --text_header_dark: #190036;
 }
 body {
-  padding: 0 10px;
+  background-color: var(--bg_light);
+  /* padding: 0 10px; */
 }
-
+header {
+  height: 100px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.top {
+  margin: 0 auto;
+  max-width: 1300px;
+}
+#top_menu {
+  border-radius: 5px 5px 0px 0px;
+}
 nav {
   background-color: var(--bg_dark);
   padding: 0px 15px;
   border-radius: 2.5px;
+}
+.greeting {
+  background-color: var(--bg_dark);
+  background-image: url("../images/campfire.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#slogan {
+  font-size: 45px;
+  color: var(--text_contrast);
+}
+.page_content {
+  /* background-color: rgba(255, 0, 0, 0.2); */
+  max-width: 1300px;
+  margin: 0 auto;
+  /* margin-top: 4px; */
+  padding: 20px 0px;
+  border-left: 1px solid var(--tab_label);
+  border-right: 1px solid var(--tab_label);
+}
+.cards {
+  display: flex;
+  justify-content: space-between;
+}
+.ui.button.go_detail {
+  background-color: var(--bg_dark);
+}
+.ui.button.go_detail a {
+  color: var(--text_contrast);
+}
+.card_info {
+  background-color: var(--bg_dark);
+}
+.card_info a {
+  color: salmon;
 }
 #welcome {
   color: var(--text_contrast);
@@ -22,4 +75,25 @@ nav {
   align-items: flex-end;
   justify-content: flex-start;
   height: 100%;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  height: 25px;
+  width: 100%;
+  padding: 0px 10px;
+  color: var(--text_contrast);
+  background-color: var(--bg_dark);
+}
+footer p {
+  line-height: 25px;
+}
+@media only screen and (max-width: 500px) {
+  .greeting {
+    visibility: hidden;
+    height: 0;
+  }
+  #top_menu {
+    border-radius: 5px 5px 5px 5px;
+  }
 }
