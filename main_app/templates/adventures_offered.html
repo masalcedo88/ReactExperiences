@@ -10,10 +10,10 @@
 <a href="adventures_offered" id="adventures-offered">Adventures Offered</a>
 <h1>HELLO</h1>
 <ul id="adventures-list">
-    {% for book in bookings %}
+    {% for adventure in adventures %}
         <li class="experience">
-            <a href="{% url 'adventure_detail' pk=book.adventure.pk %}">
-                Title = {{ book.adventure.title }}
+            <a href="{% url 'adventure_detail' pk=adventure.pk %}">
+                Title = {{ adventure.title }}
             </a><br>
             <a href="#">Delete this entry</a>
         </li>

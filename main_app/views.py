@@ -22,7 +22,7 @@ def profile(request):
 @login_required
 def adventure_create(request):
     if request.method == 'POST':
-      form = AdventureForm(request.POST)
+      form = AdventureForm(request.POST, request.FILES)
       if form.is_valid():
         adventure = form.save(commit=False)
         adventure.creator = request.user
@@ -33,9 +33,15 @@ def adventure_create(request):
     context = {'form': form, 'header': "Add New Adventure"}
     return render(request, 'adventure_form.html', context)
 
-@login_required
+
 def adventures_list(request):
-  return render(request, 'my_adventures.html')
+  # adventures = Adventure.objects.all()
+  bookings = Booking.objects.filter(customer=request.user)
+  return render(request, 'my_adventures.html', {'bookings': bookings})
+
+def adventures_offered(request):
+  adventures = Adventure.objects.filter(creator=request.user)
+  return render(request, 'adventures_offered.html', {'adventures': adventures})
 
 @login_required
 def book_adventure(request, pk):
