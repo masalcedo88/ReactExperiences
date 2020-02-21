@@ -1,22 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h1>Welcome {{ user.username }}</h1>
-<a href="profile">Account Info</a>
-<a href="my_adventures">My Adventures</a>
-<a href="new_adventure">Create Adventure</a>
-<h5>These are {{ user.username }}'s adventures!</h5>
-<a href="my_adventures">Adventures Booked</a>
-<a href="adventures_offered" id="adventures-offered">Adventures Offered</a>
-<h1>HELLO</h1>
-<ul id="adventures-list">
+<section class="page_content">
+  <a href="profile">Account Info</a>
+  <a href="my_adventures">My Adventures</a>
+  <a href="new_adventure">Create Adventure</a>
+  <div class="ui top attached two item menu">
+    <a class="item active" href="adventures_offered">Adventures I'm Offering</a>
+    <a class="item" href="my_adventures">Adventures I've Booked</a>
+  </div>
+  <div class="ui bottom attached segment">
+      {% for adventure in adventures %}
+      <div class="ui raised segment confirm_prompt">
+        <a href="{% url 'adventure_detail' pk=adventure.pk %}">
+          <h2>{{ adventure.title }}</h2>
+        </a>    
+        <a class="ui button red" href="">Cancel Booking</a>
+        <a class="ui button blue" href="">Confirm Booking</a>
+      </div> 
+    {% endfor %}  
     {% for adventure in adventures %}
-        <li class="experience">
-            <a href="{% url 'adventure_detail' pk=adventure.pk %}">
-                Title = {{ adventure.title }}
-            </a><br>
-            <a href="#">Delete this entry</a>
-        </li>
-    {% endfor %}
-</ul>
+      <div class="ui segment">
+          <a href="{% url 'adventure_detail' pk=adventure.pk %}">
+            <h2>{{ adventure.title }}</h2>
+          </a><br>
+          <a class="ui button red" href="{% url 'cancel_booking' pk=adventure.pk %}">Delete Posting</a>
+          </div>  
+      {% endfor %}
+  </div>
+</section>
 {% endblock %}
