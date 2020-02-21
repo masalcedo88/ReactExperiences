@@ -30,43 +30,40 @@
         </header>
 
         {% if user.is_authenticated %}
-        <div class="ui stackable menu">
+        <div id="top_menu" class="ui large stackable blue inverted menu">
           <div class="medium header item">Welcome, {{ user.first_name }}!</div>
-          <div class="right menu">
-            <a class="item" href="/my_adventures">My Adventures</a>
-            <a class="item" href="/profile">Profile</a>
-            <a class="item" href="/accounts/logout">Logout</a>
+          <div class="right blue inverted menu">
+            <a class="item" href="/my_adventures"
+              ><i class="globe icon"></i>My Adventures</a
+            >
+            <a class="item" href="/profile"><i class="user icon"></i>Profile</a>
+            <a class="item" href="/accounts/logout"
+              ><i class="sign-out icon"></i>Logout</a
+            >
           </div>
         </div>
         {% else %}
-        <div class="ui stackable menu">
+        <div id="top_menu" class="ui large stackable blue inverted menu">
           <div class="medium header item">
             Welcome - please sign up or log in!
           </div>
           <div class="right menu">
-            <a class="item" href="/">Adventures</a>
-            <a class="item" href="/accounts/signup">Sign Up</a>
-            <a class="item" href="/accounts/login">Log In</a>
+            <a class="item" href="/accounts/signup"
+              ><i class="user plus icon"></i>Sign Up</a
+            >
+            <a class="item" href="/accounts/login"
+              ><i class="sign-in icon"></i>Log In</a
+            >
           </div>
         </div>
         {% endif %}
       </section>
-      <section class="greeting">
-        <div class="ui segments">
-          <div class="ui segments">
-            <div class="ui segment">
-              <p>Nested Top</p>
-            </div>
-            <div class="ui segment">
-              <p>Nested Middle</p>
-            </div>
-            <div class="ui segment">
-              <p>Nested Bottom</p>
-            </div>
-          </div>
-        </div>
-      </section>
+
       {% block content %} {% endblock %}
+      <footer>
+        <p>GA SEI7</p>
+        <p>Laitala & Rueter & Salcedo</p>
+      </footer>
     </main>
   </body>
 </html>
