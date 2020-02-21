@@ -37,11 +37,16 @@ def signup(request):
 
 def edit_info(request):
   if request.method == "POST":
-    request.user.first_name = request.POST['first_name']
-    request.user.last_name = request.POST['last_name']
-    request.user.email = request.POST['email']
-  else:
+    first_name = request.POST['first_name']
+    last_name = request.POST['last_name']
+    email = request.POST['email']
+    user = User.objects.get(pk=request.user.pk)
+    print(user)
+    # user.first_name = first_name
+    # user.save()
     return redirect('profile')
+  else:
+    return render(request, 'edit_info.html')
 
 def login(request):
   if request.method == 'POST':

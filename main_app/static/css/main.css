@@ -76,6 +76,11 @@ nav {
   justify-content: flex-start;
   height: 100%;
 }
+#profile-picture {
+  width: 5em;
+  height: 5em;
+  background-color: blue;
+}
 footer {
   display: flex;
   justify-content: space-between;
