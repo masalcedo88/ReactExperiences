@@ -33,12 +33,13 @@ def adventure_create(request):
     context = {'form': form, 'header': "Add New Adventure"}
     return render(request, 'adventure_form.html', context)
 
-
+@login_required
 def adventures_list(request):
   # adventures = Adventure.objects.all()
   bookings = Booking.objects.filter(customer=request.user)
   return render(request, 'my_adventures.html', {'bookings': bookings})
 
+@login_required
 def adventures_offered(request):
   adventures = Adventure.objects.filter(creator=request.user)
   return render(request, 'adventures_offered.html', {'adventures': adventures})
