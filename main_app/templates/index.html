@@ -9,11 +9,11 @@
   <div class="ui centered cards">
     {% for adventure in adventures %} {% if not adventure.bookings.all %}
     <div class="ui card">
-      <div class="image">
+      <div class="image hover-zoom">
         <img src="{{ adventure.picture }}" />
       </div>
       <div class="content card_info">
-        <a class="header">{{adventure.title}}</a>
+        <div class="header">{{adventure.title}}</div>
         <div class="meta">
           <span class="date">{{adventure.date}}</span>
         </div>
