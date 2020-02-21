@@ -38,7 +38,7 @@ def adventures_list(request):
 
 @login_required
 def adventures_offered(request):
-  adventures = Adventure.objects.filter(creator=request.user)
+  adventures = Adventure.objects.all()
   return render(request, 'adventures_offered.html', {'adventures': adventures})
 
 @login_required

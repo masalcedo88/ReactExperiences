@@ -15,6 +15,11 @@
         <a href="{% url 'adventure_detail' pk=book.adventure.pk %}">
           <h2>{{ book.adventure.title }}</h2>
         </a>
+        {% if book.confirmed == False %}
+        <p>Confirmation Pending</p>
+        {% elif book.confirmed == True %}
+        <p>Booking Confirmed</p>
+        {% endif %}
         <a class="ui button red" href="{% url 'cancel_booking' pk=book.pk %}">Cancel Booking</a>
       </div>  
     {% endfor %}
