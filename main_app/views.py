@@ -46,7 +46,7 @@ def book_adventure(request, pk):
   customer = request.user
   adventure = Adventure.objects.get(pk=pk)
   booking = Booking.objects.create(customer=customer, adventure=adventure)
-  return redirect('profile')
+  return redirect('adventures_list')
 
 @login_required
 def cancel_booking(request, pk):

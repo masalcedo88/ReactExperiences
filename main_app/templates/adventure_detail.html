@@ -14,12 +14,13 @@
       <div class="ui inverted segment adv_detail_desc">
         <h3>Adventure No. {{ adventure.pk }}</h5>
         <p>{{ adventure.description }}</p>
-  
+        {% if not adventure.bookings.all %}
         <a
           class="ui right button primary"
           href="{% url 'book_adventure' pk=adventure.pk %}"
           >Book this adventure!</a
         >
+        {% endif %}
       </div>
     </section>
   </section>
