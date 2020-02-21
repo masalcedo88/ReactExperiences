@@ -9,4 +9,5 @@ urlpatterns = [
   path('adventures_offered', views.adventures_offered, name='adventures_offered'),
   path('adventures/<int:pk>', views.adventure_detail, name='adventure_detail'),
   path('book_adventure/<int:pk>', views.book_adventure, name='book_adventure'),
+  path('cancel_booking/<int:pk>', views.cancel_booking, name='cancel_booking'),
 ]
