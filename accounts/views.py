@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def signup(request):
@@ -33,6 +34,14 @@ def signup(request):
       return render(request, 'signup.html', context)
   else:
     return render(request, 'signup.html')
+
+def edit_info(request):
+  if request.method == "POST":
+    request.user.first_name = request.POST['first_name']
+    request.user.last_name = request.POST['last_name']
+    request.user.email = request.POST['email']
+  else:
+    return redirect('profile')
 
 def login(request):
   if request.method == 'POST':

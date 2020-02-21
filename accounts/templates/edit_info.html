@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if error %}
+    <p style="background-color: firebrick;">{{error}}</p>
+{% endif %}
+
+<section class="form-section">
+    <form action="{% url 'edit_info' %}" method="POST" class="user-form">
+    {% csrf_token %}
+    <p>
+        <label for="first_name">First Name</label>
+        <input value="{{ user.first_name }}" type="text" name="first_name"  maxlength="25" minlength="2" required>
+    </p>
+    <p>
+        <label for="last_name">Last Name</label>
+        <input value="{{ user.last_name }}" type="text" name="last_name"  maxlength="25" minlength="2" required>
+    </p>
+    <p>
+        <label for="email">Email</label>
+        <input value="{{ user.email }}" type="email" name="email"  maxlength="25" minlength="2" required>
+    </p>
+    <button type="submit"> Update Info </button>
+    </form>
+</section>
+
+{% endblock %}
