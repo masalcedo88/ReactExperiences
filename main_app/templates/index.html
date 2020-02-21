@@ -1,38 +1,31 @@
 {% extends 'base.html' %} {% block content %}
-
-<h1>Choose your own adventure {{ user.first_name }}!</h1>
-<p>I am a homepage :)</p>
-<small>please, style me</small>
-<div class="ui link cards">
-  <!-- <ul> -->
-  {% for adventure in adventures %} {% if not adventure.bookings.all %}
-  <!-- <li class="experience"> -->
-  <!-- <a href="{% url 'adventure_detail' pk=adventure.pk %}"> -->
-  <!-- {{ adventure.title }} -->
-  <!-- </a> -->
-  <!-- </li> -->
-  <!-- </ul> -->
-
-  <div class="ui card">
-    <div class="image">
-      <img src="{{ adventure.picture }}" />
-    </div>
-    <div class="content">
-      <a class="header">{{adventure.title}}</a>
-      <div class="meta">
-        <span class="date">{{adventure.date}}</span>
-      </div>
-      <div class="description">
-        PlaceHolder
-      </div>
-    </div>
-    <div class="ui bottom attached button">
-      <a href="{% url 'adventure_detail' pk=adventure.pk %}">
-        See More
-        <i class="right arrow icon"></i>
-      </a>
-    </div>
+<section class="greeting">
+  <div id="slogan" class="ui huge header">
+    FIND YOUR NEXT ADVENTURE.
   </div>
-  {% endif %} {% endfor %}
-</div>
+</section>
+<section class="page_content">
+  <!-- <div class="ui header huge">See what's happening:</div> -->
+  <div class="ui centered cards">
+    {% for adventure in adventures %} {% if not adventure.bookings.all %}
+    <div class="ui card">
+      <div class="image">
+        <img src="{{ adventure.picture }}" />
+      </div>
+      <div class="content card_info">
+        <a class="header">{{adventure.title}}</a>
+        <div class="meta">
+          <span class="date">{{adventure.date}}</span>
+        </div>
+      </div>
+      <div class="ui bottom attached button go_detail">
+        <a href="{% url 'adventure_detail' pk=adventure.pk %}">
+          See More
+          <i class="angle right icon"></i>
+        </a>
+      </div>
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+</section>
 {% endblock %}
