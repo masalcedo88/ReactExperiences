@@ -32,13 +32,24 @@ nav {
 }
 .greeting {
   background-color: var(--bg_dark);
-  background-image: url('../images/campfire.jpg');
+  background-image: url("../images/campfire.jpg");
   background-position: center;
   background-size: cover;
   height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+.detail_image {
+  background-color: var(--bg_dark);
+  background-position: center;
+  background-size: cover;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 #slogan {
   font-size: 45px;
@@ -49,9 +60,11 @@ nav {
   max-width: 1300px;
   margin: 0 auto;
   /* margin-top: 4px; */
-  padding: 20px 10px;
+  padding: 10px 10px;
   border-left: 1px solid var(--tab_label);
   border-right: 1px solid var(--tab_label);
+  border-bottom: 1px solid var(--tab_label);
+  border-radius: 0px 0px 5px 5px;
 }
 .cards {
   display: flex;
@@ -86,6 +99,9 @@ nav {
   justify-content: flex-start;
   height: 100%;
 }
+main {
+  position: relative;
+}
 footer {
   display: flex;
   justify-content: space-between;
@@ -94,6 +110,9 @@ footer {
   padding: 0px 10px;
   color: var(--text_contrast);
   background-color: var(--bg_dark);
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 footer p {
   line-height: 25px;
@@ -103,7 +122,7 @@ footer p {
     visibility: hidden;
     height: 0;
   }
-  #top_menu {
+  /* #top_menu {
     border-radius: 5px 5px 5px 5px;
-  }
+  } */
 }

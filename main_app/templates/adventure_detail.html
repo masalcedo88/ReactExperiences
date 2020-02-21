@@ -1,17 +1,26 @@
 {% extends 'base.html' %} {% block content %}
+<div class="detail_image">
+  <img src="{{ adventure.picture.url }}" alt="" />
+</div>
 <section class="page_content">
   <section class="adventure-header">
     <section class="adventure-info">
-      <h2>{{ adventure.title }}</h2>
-      <!-- <img src="{{ adventure.picture }}" alt=""> -->
-      <h5>{{ adventure.pk }}</h5>
-      <img src="{{ adventure.picture.url }}" alt="profile picture" />
-      <p>{{ adventure.description }}</p>
-      <a
-        class="ui button primary"
-        href="{% url 'book_adventure' pk=adventure.pk %}"
-        >Book this adventure!</a
-      >
+      <div class="ui header large">
+        {{ adventure.title }}
+      </div>
+      <p>
+        Presented by {{ adventure.creator.first_name }} {{adventure.creator.last_name }}
+      </p>
+      <div class="ui inverted segment adv_detail_desc">
+        <h3>Adventure No. {{ adventure.pk }}</h5>
+        <p>{{ adventure.description }}</p>
+  
+        <a
+          class="ui right button primary"
+          href="{% url 'book_adventure' pk=adventure.pk %}"
+          >Book this adventure!</a
+        >
+      </div>
     </section>
   </section>
 </section>
