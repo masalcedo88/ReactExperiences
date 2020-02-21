@@ -1,33 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="profile-nav">
-<h1>Welcome {{ user.username }}</h1>
+<section class="page_content">
+  <div class="profile-nav">
+    <div class="ui large header">Your Account</div>
     <a href="profile">Account Info</a>
     <a href="my_adventures">My Adventures</a>
     <a href="new_adventure">Create Adventure</a>
 </div>
 <div>
     <div>
-        <img id="profile-picture" src="" alt="">
+        <img id="profile-picture" src=" {{ user.profile.picture.url }}" alt="profile picture">
     </div>
     <br>
-    <a href="#">Update Image</a>
+    <a class="ui button small" href="#">Update Image</a>
 </div>
 <div class="full-name">
-    <h4>{{ user.first_name }}</h4>
     <small>First Name</small>
-    <h4>{{ user.last_name }}</h4>
+    <h4>{{ user.first_name }}</h4>
     <small>Last Name</small>
-</div>
-<div>
+  </div>
+  <div>
     <h4>{{ user.email }}</h4>
     <small>Email</small>
-</div>
-<div class="edit-buttons">
-    <a href="accounts/edit_info">Update Profile</a>
+  </div>
+  <div class="ui buttons fluid edit-buttons">
+    <a class="ui button" href="accounts/edit_info">Update Profile</a>
     <br>
-    <a href="accounts/change_password">Update Password</a>
-</div>
-
-
+    <a class="ui button" href="accounts/change_password">Update Password</a>
+  </div>
+</section>
 {% endblock %}
