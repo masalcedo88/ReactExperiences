@@ -32,7 +32,7 @@ nav {
 }
 .greeting {
   background-color: var(--bg_dark);
-  background-image: url('../images/campfire.jpg');
+  background-image: url("../images/campfire.jpg");
   background-position: center;
   background-size: cover;
   height: 400px;
@@ -99,8 +99,7 @@ nav {
   justify-content: flex-start;
   height: 100%;
 }
-
-.confirm_prompt: main {
+main {
   position: relative;
 }
 #profile-picture {

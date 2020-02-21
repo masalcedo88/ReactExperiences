@@ -13,7 +13,8 @@
       <div class="ui raised segment confirm_prompt">
         <a href="{% url 'adventure_detail' pk=adventure.pk %}">
           <h2>{{ adventure.title }}</h2>
-        </a>    
+          <h2>{{ adventure.date }}</h2>
+        </a><br>    
         <a class="ui button red" href="">Cancel Booking</a>
         <a class="ui button blue" href="">Confirm Booking</a>
       </div> 
@@ -22,6 +23,7 @@
       <div class="ui segment">
           <a href="{% url 'adventure_detail' pk=adventure.pk %}">
             <h2>{{ adventure.title }}</h2>
+            <h2>{{ adventure.date }}</h2>
           </a><br>
           <a class="ui button red" href="{% url 'cancel_booking' pk=adventure.pk %}">Delete Posting</a>
           </div>  
