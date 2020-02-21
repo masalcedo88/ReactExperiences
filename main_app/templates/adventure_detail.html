@@ -1,14 +1,18 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<section class="adventure-header">
-	<section class="adventure-info">
-    <h2>{{ adventure.title }}</h2>
-    <!-- <img src="{{ adventure.picture }}" alt=""> -->
-    <h5>{{ adventure.pk }}</h5>
-    <img src="{{ adventure.picture.url }}" alt="">
-    <p>{{ adventure.description }}</p>
-    <a href="{% url 'book_adventure' pk=adventure.pk %}">Book this adventure!</a>
+{% extends 'base.html' %} {% block content %}
+<section class="page_content">
+  <section class="adventure-header">
+    <section class="adventure-info">
+      <h2>{{ adventure.title }}</h2>
+      <!-- <img src="{{ adventure.picture }}" alt=""> -->
+      <h5>{{ adventure.pk }}</h5>
+      <img src="{{ adventure.picture.url }}" alt="" />
+      <p>{{ adventure.description }}</p>
+      <a
+        class="ui button primary"
+        href="{% url 'book_adventure' pk=adventure.pk %}"
+        >Book this adventure!</a
+      >
+    </section>
   </section>
 </section>
 {% endblock %}
