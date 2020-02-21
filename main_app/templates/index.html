@@ -3,7 +3,7 @@
 <h1>Choose your own adventure {{ user.first_name }}!</h1>
 <p>I am a homepage :)</p>
 <small>please, style me</small>
-<div class="ui link cards">
+<div class="ui centered cards">
   <!-- <ul> -->
   {% for adventure in adventures %} {% if not adventure.bookings.all %}
   <!-- <li class="experience"> -->
@@ -17,19 +17,16 @@
     <div class="image">
       <img src="{{ adventure.picture }}" />
     </div>
-    <div class="content">
+    <div class="content card_info">
       <a class="header">{{adventure.title}}</a>
       <div class="meta">
         <span class="date">{{adventure.date}}</span>
       </div>
-      <div class="description">
-        PlaceHolder
-      </div>
     </div>
-    <div class="ui bottom attached button">
+    <div class="ui bottom attached button go_detail">
       <a href="{% url 'adventure_detail' pk=adventure.pk %}">
         See More
-        <i class="right arrow icon"></i>
+        <i class="angle right icon"></i>
       </a>
     </div>
   </div>
