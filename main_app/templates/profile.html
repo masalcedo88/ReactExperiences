@@ -8,20 +8,20 @@
 </div>
 <div>
     <div>
-        <img id="profile-picture" src="" alt="">
+        <img id="profile-picture" src=" {{ user.profile.picture.url }}" alt="profile picture">
     </div>
     <br>
     <a href="#">Update Image</a>
 </div>
 <div class="full-name">
-    <h4>{{ user.first_name }}</h4>
     <small>First Name</small>
-    <h4>{{ user.last_name }}</h4>
+    <h4>{{ user.first_name }}</h4>
     <small>Last Name</small>
+    <h4>{{ user.last_name }}</h4>
 </div>
 <div>
-    <h4>{{ user.email }}</h4>
     <small>Email</small>
+    <h4>{{ user.email }}</h4>
 </div>
 <div class="edit-buttons">
     <a href="accounts/edit_info">Update Profile</a>
