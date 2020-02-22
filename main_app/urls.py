@@ -9,5 +9,7 @@ urlpatterns = [
   path('adventures_offered', views.adventures_offered, name='adventures_offered'),
   path('adventures/<int:pk>', views.adventure_detail, name='adventure_detail'),
   path('book_adventure/<int:pk>', views.book_adventure, name='book_adventure'),
+  path('confirm_booking/<int:pk>', views.confirm_booking, name='confirm_booking'),
   path('cancel_booking/<int:pk>', views.cancel_booking, name='cancel_booking'),
+  path('delete_post/<int:pk>', views.delete_post, name='delete_post'),
 ]
