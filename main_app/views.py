@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import Adventure, Booking
 from .forms import AdventureForm, BookingForm
 
@@ -19,17 +20,17 @@ def profile(request):
 
 @login_required
 def adventure_create(request):
-    if request.method == 'POST':
-      form = AdventureForm(request.POST, request.FILES)
-      if form.is_valid():
-        adventure = form.save(commit=False)
-        adventure.creator = request.user
-        adventure.save()
-        return redirect('profile')
-    else:
-      form = AdventureForm()
-    context = {'form': form, 'header': "Add New Adventure"}
-    return render(request, 'adventure_form.html', context)
+  if request.method == 'POST':
+    form = AdventureForm(request.POST, request.FILES)
+    if form.is_valid():
+      adventure = form.save(commit=False)
+      adventure.creator = request.user
+      adventure.save()
+      return redirect('profile')
+  else:
+    form = AdventureForm()
+  context = {'form': form, 'header': "Add New Adventure"}
+  return render(request, 'adventure_form.html', context)
 
 @login_required
 def adventures_list(request):
@@ -38,7 +39,7 @@ def adventures_list(request):
 
 @login_required
 def adventures_offered(request):
-  adventures = Adventure.objects.filter(creator=request.user)
+  adventures = Adventure.objects.all()
   return render(request, 'adventures_offered.html', {'adventures': adventures})
 
 @login_required
@@ -46,9 +47,21 @@ def book_adventure(request, pk):
   customer = request.user
   adventure = Adventure.objects.get(pk=pk)
   booking = Booking.objects.create(customer=customer, adventure=adventure)
-  return redirect('profile')
+  return redirect('adventures_list')
+
+@login_required
+def confirm_booking(request, pk):
+  booking = Booking.objects.get(pk=pk)
+  booking.confirmed = True
+  booking.save()
+  return redirect('adventures_list')
 
 @login_required
 def cancel_booking(request, pk):
   Booking.objects.get(id=pk).delete()
+  return redirect('adventures_list')
+
+@login_required
+def delete_post(request, pk):
+  Adventure.objects.get(id=pk).delete()
   return redirect('adventures_list')

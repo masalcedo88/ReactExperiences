@@ -6,8 +6,8 @@
     <a href="profile">Account Info</a>
     <a href="my_adventures">My Adventures</a>
     <a href="new_adventure">Create Adventure</a>
-</div>
-<div>
+  </div>
+  <div>
     <div>
         <img id="profile-picture" src=" {{ user.profile.picture.url }}" alt="profile picture">
     </div>
@@ -16,18 +16,14 @@
     <a class="ui button small" href="{% url 'update_photo' %}">Update Image</a>
 </div>
 <div class="full-name">
-    <small>First Name</small>
-    <h4>{{ user.first_name }}</h4>
-    <small>Last Name</small>
-  </div>
-  <div>
-    <h4>{{ user.email }}</h4>
-    <small>Email</small>
-  </div>
+    <h4>Username: {{ user.username }}</h4>
+    <h4>Name: {{ user.first_name }} {{ user.last_name }}</h4>
+    <h4>Email: {{ user.email }}</h4>
+</div>
   <div class="ui buttons fluid edit-buttons">
     <a class="ui button" href="accounts/edit_info">Update Profile</a>
     <br>
-    <a class="ui button" href="#">Update Password</a>
+    <a class="ui button" href="accounts/change_password">Update Password</a>
   </div>
 </section>
 {% endblock %}

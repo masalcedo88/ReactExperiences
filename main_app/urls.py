@@ -13,10 +13,7 @@ urlpatterns = [
   path('adventures_offered', views.adventures_offered, name='adventures_offered'),
   path('adventures/<int:pk>', views.adventure_detail, name='adventure_detail'),
   path('book_adventure/<int:pk>', views.book_adventure, name='book_adventure'),
+  path('confirm_booking/<int:pk>', views.confirm_booking, name='confirm_booking'),
   path('cancel_booking/<int:pk>', views.cancel_booking, name='cancel_booking'),
-  # url(r'^search/', include('search.urls', namespace='search')),
+  path('delete_post/<int:pk>', views.delete_post, name='delete_post'),
 ]
-
-# if settings.DEBUG:
-#     urlpatterns= urlpatterns + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
-#     urlpatterns= urlpatterns + static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)
