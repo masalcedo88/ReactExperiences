@@ -12,7 +12,8 @@
         <img id="profile-picture" src=" {{ user.profile.picture.url }}" alt="profile picture">
     </div>
     <br>
-    <a class="ui button small" href="#">Update Image</a>
+    <!-- # WORKING HERE -->
+    <a class="ui button small" href="{% url 'update_photo' %}">Update Image</a>
 </div>
 <div class="full-name">
     <small>First Name</small>

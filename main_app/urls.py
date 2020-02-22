@@ -1,5 +1,9 @@
 from django.urls import path
 from . import views
+# from django.conf.urls import url, include
+# from django.contrib import admin
+# from django.conf.urls.static import static
+# from django.conf import settings
 
 urlpatterns = [
   path('', views.index, name='index'),
@@ -10,4 +14,9 @@ urlpatterns = [
   path('adventures/<int:pk>', views.adventure_detail, name='adventure_detail'),
   path('book_adventure/<int:pk>', views.book_adventure, name='book_adventure'),
   path('cancel_booking/<int:pk>', views.cancel_booking, name='cancel_booking'),
+  # url(r'^search/', include('search.urls', namespace='search')),
 ]
+
+# if settings.DEBUG:
+#     urlpatterns= urlpatterns + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
+#     urlpatterns= urlpatterns + static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)
