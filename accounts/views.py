@@ -39,6 +39,7 @@ def signup(request):
   else:
     return render(request, 'signup.html')
 
+@login_required
 def edit_info(request):
   if request.method == "POST":
     first_name = request.POST['first_name']
@@ -52,6 +53,16 @@ def edit_info(request):
     return redirect('profile')
   else:
     return render(request, 'edit_info.html')
+
+# WORKING HERE
+@login_required
+def update_picture(request):
+  profile = request.user.profile
+  profile.image = request.FILES['Photo']
+  profile.save()
+  print(profile)
+  return redirect('profile')
+# WORKING HERE
 
 def login(request):
   if request.method == 'POST':

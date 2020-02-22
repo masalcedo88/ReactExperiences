@@ -12,16 +12,14 @@
         <img id="profile-picture" src=" {{ user.profile.picture.url }}" alt="profile picture">
     </div>
     <br>
-    <a class="ui button small" href="#">Update Image</a>
-  </div>
-  <div class="full-name">
+    <!-- # WORKING HERE -->
+    <a class="ui button small" href="{% url 'update_photo' %}">Update Image</a>
+</div>
+<div class="full-name">
     <h4>Username: {{ user.username }}</h4>
     <h4>Name: {{ user.first_name }} {{ user.last_name }}</h4>
     <h4>Email: {{ user.email }}</h4>
-  </div>
-    
-  
-
+</div>
   <div class="ui buttons fluid edit-buttons">
     <a class="ui button" href="accounts/edit_info">Update Profile</a>
     <br>
