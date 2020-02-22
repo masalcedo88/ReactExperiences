@@ -18,7 +18,9 @@
           <h2>{{ adventure.date }}</h2>
         </a><br>
         <a class="ui button red" href="{% url 'cancel_booking' pk=adventure.bookings.get.pk %}">Cancel Booking</a>
+        {% if adventure.bookings.get.confirmed == False %}
         <a class="ui button blue" href="{% url 'confirm_booking' pk=adventure.bookings.get.pk %}">Confirm Booking</a>
+        {% endif %}
       </div> 
       {% endif %}{% endif %}
     {% endfor %}  
