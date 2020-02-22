@@ -11,3 +11,10 @@ class UserForm(forms.ModelForm):
       'email',
       'picture'
     ]
+
+# WORKING HERE
+class ProfileUpdateForm(forms.ModelForm):
+  class Meta:
+    model = Profile
+    field = ['picture']
+# WORKING HERE
