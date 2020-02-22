@@ -7,6 +7,7 @@
   --text_contrast: #ff6356;
   --text_body_dark: #483b60;
   --text_header_dark: #190036;
+  --semantic_blue: rgb(41, 109, 207);
 }
 body {
   background-color: var(--bg_light);
@@ -58,14 +59,13 @@ nav {
 .page_content {
   background: var(--bg_light);
   max-width: 1300px;
-  min-height: 100%;
   margin: 0 auto;
-  margin-bottom: 25px;
   padding: 10px 10px;
   border-left: 1px solid var(--tab_label);
   border-right: 1px solid var(--tab_label);
   border-bottom: 1px solid var(--tab_label);
   border-radius: 0px 0px 5px 5px;
+  margin-bottom: 22px;
 }
 .cards {
   display: flex;
@@ -104,8 +104,8 @@ nav {
   justify-content: flex-start;
   height: 100%;
 }
-.form-section {
-  max-width: 400px;
+main {
+  position: relative;
 }
 footer {
   display: flex;
@@ -139,6 +139,9 @@ footer p {
     height: 0;
   }
   #top_menu {
+    border-radius: 0px;
+  }
+  .page_content {
     border-radius: 0px;
   }
 }
