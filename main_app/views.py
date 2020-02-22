@@ -51,13 +51,10 @@ def book_adventure(request, pk):
 
 @login_required
 def confirm_booking(request, pk):
-  if request.method == "POST":
-    booking = Booking.objects.get(id=pk)
-    booking.confirmed = True
-    booking.save()
-    return redirect('profile')
-  else:
-    return render(request, 'adventures_offered.html')
+  booking = Booking.objects.get(pk=pk)
+  booking.confirmed = True
+  booking.save()
+  return redirect('adventures_list')
 
 @login_required
 def cancel_booking(request, pk):
