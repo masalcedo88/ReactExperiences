@@ -16,10 +16,12 @@
       </div> 
       <div class="ui bottom attached buttons">
         <a class="ui cancel button" href="{% url 'cancel_booking' pk=adventure.bookings.get.pk %}">Cancel Booking</a>
+        {% if adventure.bookings.get.confirmed == False %}
         <a class="ui button teal" href="{% url 'confirm_booking' pk=adventure.bookings.get.pk %}">Confirm Booking</a>
+        {% endif %}
       </div>
       {% endif %}{% endif %}
-    {% endfor %}  
+    {% endfor %}
     {% for adventure in adventures %}
     {% if adventure.creator == request.user %}{% if not adventure.bookings.all %}
       <div class="ui top attached segment">

@@ -6,6 +6,12 @@
     <a class="item" href="my_adventures">Adventures I've Booked</a>
   </div>
   <div class="ui bottom attached segment">
+    {% if not bookings.all %}
+    <div class="ui top attached center aligned segment">
+      <h3 class="ui header">You don't have any booked adventures yet.</h3>
+    </div>
+    <a class="ui bottom attached fluid teal button" href="/">Find your next adventure!</a>
+    {% else %}
     {% for book in bookings %}
       <div class="ui top attached segment">
         {% if book.confirmed == False %}
@@ -19,6 +25,7 @@
       </div>  
       <a class="ui bottom attached cancel button" href="{% url 'cancel_booking' pk=book.pk %}">Cancel Booking</a>
     {% endfor %}
+    {% endif %}
   </div>
 {% endblock %}
 
