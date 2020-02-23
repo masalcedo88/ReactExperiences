@@ -85,16 +85,16 @@ nav {
   display: flex;
   justify-content: space-between;
 }
-.hover-zoom {
+.hover_zoom {
   height: 200px;
   overflow: hidden;
 }
-.hover-zoom img {
+.hover_zoom img {
   height: 100% !important;
   width: 100%;
   object-fit: cover;
 }
-.hover-zoom:hover img {
+.hover_zoom:hover img {
   transition: transform 0.75s ease;
   transform: scale(1.125);
 }

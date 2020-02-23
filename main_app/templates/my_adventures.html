@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <section class="page_content">
-
   <div class="ui top attached two item menu">
     <a class="item active" href="adventures_offered">Adventures I'm Offering</a>
     <a class="item" href="my_adventures">Adventures I've Booked</a>
   </div>
-</div>
   <div class="ui bottom attached segment">
     {% for book in bookings %}
       <div class="ui attached segment">
