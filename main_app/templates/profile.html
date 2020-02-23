@@ -1,29 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 <section class="page_content">
-  <div class="profile-nav">
-    <div class="ui large header">Your Account</div>
-    <a href="profile">Account Info</a>
-    <a href="my_adventures">My Adventures</a>
-    <a href="new_adventure">Create Adventure</a>
-  </div>
-  <div>
-    <div>
-        <img id="profile-picture" src=" {{ user.profile.picture.url }}" alt="profile picture">
+  <div class="ui top attached segment">
+    <div class="profile-nav">
+      <div class="ui large header">Your Account</div>
     </div>
-    <br>
-    <!-- # WORKING HERE -->
-    <a class="ui button small" href="{% url 'update_photo' %}">Update Image</a>
-</div>
-<div class="full-name">
-    <h4>Username: {{ user.username }}</h4>
-    <h4>Name: {{ user.first_name }} {{ user.last_name }}</h4>
-    <h4>Email: {{ user.email }}</h4>
-</div>
-  <div class="ui buttons fluid edit-buttons">
-    <a class="ui button" href="accounts/edit_info">Update Profile</a>
-    <br>
-    <a class="ui button" href="accounts/change_password">Update Password</a>
+      <div>User Image:</div>
+      <img class="ui image" id="profile-picture" src=" {{ user.profile.picture.url }}" alt="profile picture">
+      <!-- # WORKING HERE -->
+    <div class="ui text user_info">
+      <div>Username: {{ user.username }}</div>
+      <div>Name: {{ user.first_name }} {{ user.last_name }}</div>
+      <div>Email: {{ user.email }}</div>
+    </div>
+  </div>
+  <div class="ui bottom attached inverted teal three item menu">
+    <a class="ui item button small" href="{% url 'update_photo' %}">Update Image</a>
+    <a class="ui item teal button" href="accounts/edit_info">Update Account</a>
+    <a class="ui item teal button" href="accounts/change_password">Change Password</a>
   </div>
 </section>
 {% endblock %}

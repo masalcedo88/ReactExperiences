@@ -1,16 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 <section class="page_content">
-  <a href="profile">Account Info</a>
-  <a href="my_adventures">My Adventures</a>
-  <a href="new_adventure">Create Adventure</a>
   <div class="ui top attached two item menu">
-    <a class="item active" href="adventures_offered">Adventures I'm Offering</a>
-    <a class="item" href="my_adventures">Adventures I've Booked</a>
+    <a class="item" href="adventures_offered">Adventures I'm Offering</a>
+    <a class="item active" href="my_adventures">Adventures I've Booked</a>
   </div>
   <div class="ui bottom attached segment">
     {% for adventure in adventures %}
       {% if adventure.creator == request.user %}{% if adventure.bookings.all %}
+<<<<<<< HEAD
       <div class="ui raised segment confirm_prompt">
         <a href="{% url 'adventure_detail' pk=adventure.pk %}">
           <h2>{{ adventure.title }}</h2><h3 class="red">Booked</h3>
@@ -20,21 +18,31 @@
         {% if adventure.bookings.get.confirmed == False %}
         <a class="ui button blue" href="{% url 'confirm_booking' pk=adventure.bookings.get.pk %}">Confirm Booking</a>
         {% endif %}
+=======
+      <div class="ui raised top attached segment confirm_prompt">
+        <h3>Booking Requested</h3>
+        <a class="ui text" href="{% url 'adventure_detail' pk=adventure.pk %}">
+          <h3>{{ adventure.title }} - {{ adventure.date }}</h3>
+        </a>
+>>>>>>> submaster
       </div> 
+      <div class="ui bottom attached buttons">
+        <a class="ui cancel button" href="{% url 'cancel_booking' pk=adventure.bookings.get.pk %}">Cancel Booking</a>
+        <a class="ui button teal" href="{% url 'confirm_booking' pk=adventure.bookings.get.pk %}">Confirm Booking</a>
+      </div>
       {% endif %}{% endif %}
     {% endfor %}  
     {% for adventure in adventures %}
     {% if adventure.creator == request.user %}{% if not adventure.bookings.all %}
-    NOT BOOKED
-      <div class="ui segment">
-          <a href="{% url 'adventure_detail' pk=adventure.pk %}">
-            <h2>{{ adventure.title }}</h2>
-            <h2>{{ adventure.date }}</h2>
-          </a><br>
-          <a class="ui button red" href="{% url 'delete_post' pk=adventure.pk %}">Delete Post</a>
-          </div> 
-      {% endif %} {% endif %}
-      {% endfor %}
+      <div class="ui top attached segment">
+        <a class="ui text" href="{% url 'adventure_detail' pk=adventure.pk %}">
+          <h3>{{ adventure.title }} - {{ adventure.date }}</h3>
+        </a>
+      </div> 
+      <a class="ui bottom attached cancel button" href="{% url 'delete_post' pk=adventure.pk %}">Delete Post</a>
+    {% endif %} {% endif %}
+    {% endfor %}
+    <a id="new_adventure" class="ui huge fluid teal button" href="new_adventure">Create New Adventure</a>
   </div>
 </section>
 {% endblock %}

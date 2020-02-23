@@ -1,29 +1,34 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <section class="page_content">
-    <a href="profile">Account Info</a>
-    <a href="my_adventures">My Adventures</a>
-    <a href="new_adventure">Create Adventure</a>
   <div class="ui top attached two item menu">
-    <a class="item" href="adventures_offered">Adventures I'm Offering</a>
-    <a class="item active" href="my_adventures">Adventures I've Booked</a>
+    <a class="item active" href="adventures_offered">Adventures I'm Offering</a>
+    <a class="item" href="my_adventures">Adventures I've Booked</a>
   </div>
-</div>
   <div class="ui bottom attached segment">
     {% for book in bookings %}
-      <div class="ui segment">
-        <a href="{% url 'adventure_detail' pk=book.adventure.pk %}">
-          <h2>{{ book.adventure.title }}</h2>
-        </a>
+      <div class="ui top attached segment">
         {% if book.confirmed == False %}
-        <p>Confirmation Pending</p>
+        <h3>Confirmation Pending</h3>
         {% elif book.confirmed == True %}
-        <p>Booking Confirmed</p>
+        <h3>Booking Confirmed</h3>
         {% endif %}
-        <a class="ui button red" href="{% url 'cancel_booking' pk=book.pk %}">Cancel Booking</a>
+        <a href="{% url 'adventure_detail' pk=book.adventure.pk %}">
+          <h3>{{ book.adventure.title }} - {{book.adventure.date}}</h3>
+        </a>
       </div>  
+      <a class="ui bottom attached cancel button" href="{% url 'cancel_booking' pk=book.pk %}">Cancel Booking</a>
     {% endfor %}
   </div>
-</section>
 {% endblock %}
+
+
+<!-- 
+  Hey Marco - how hard would it be to write an if loop for my_adventures that would display the following if the user had no booked adventures?
+  
+  <div class="ui top attached center aligned segment">
+    <h3 class="ui header">You don't have any booked adventures yet.</h3>
+  </div>
+  <a class="ui bottom attached fluid teal button" href="/">Find your next adventure!</a>
+ -->
+
