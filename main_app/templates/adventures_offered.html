@@ -1,20 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 <section class="page_content">
-  <a href="profile">Account Info</a>
-  <a href="my_adventures">My Adventures</a>
-  <a href="new_adventure">Create Adventure</a>
   <div class="ui top attached two item menu">
-    <a class="item active" href="adventures_offered">Adventures I'm Offering</a>
-    <a class="item" href="my_adventures">Adventures I've Booked</a>
+    <a class="item" href="adventures_offered">Adventures I'm Offering</a>
+    <a class="item active" href="my_adventures">Adventures I've Booked</a>
   </div>
-  BOOKED
-  <div class="ui bottom attached segment">
+
+  <div class="ui attached segment">
     {% for adventure in adventures %}
       {% if adventure.creator == request.user %}{% if adventure.bookings.all %}
       <div class="ui raised segment confirm_prompt">
         <a href="{% url 'adventure_detail' pk=adventure.pk %}">
-          <h2>{{ adventure.title }}</h2>
+          <h2>{{ adventure.title }} - Booking Requested</h2>
           <h2>{{ adventure.date }}</h2>
         </a><br>
         <a class="ui button red" href="{% url 'cancel_booking' pk=adventure.bookings.get.pk %}">Cancel Booking</a>
@@ -24,7 +21,7 @@
     {% endfor %}  
     {% for adventure in adventures %}
     {% if adventure.creator == request.user %}{% if not adventure.bookings.all %}
-    NOT BOOKED
+
       <div class="ui segment">
           <a href="{% url 'adventure_detail' pk=adventure.pk %}">
             <h2>{{ adventure.title }}</h2>
@@ -35,5 +32,9 @@
       {% endif %} {% endif %}
       {% endfor %}
   </div>
+  <a
+    class="ui teal bottom attached button"
+    href="new_adventure">Create New Adventure
+</a>
 </section>
 {% endblock %}
