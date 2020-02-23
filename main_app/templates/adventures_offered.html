@@ -6,35 +6,35 @@
     <a class="item active" href="my_adventures">Adventures I've Booked</a>
   </div>
 
-  <div class="ui attached segment">
+  <div class="ui bottom attached segment">
     {% for adventure in adventures %}
       {% if adventure.creator == request.user %}{% if adventure.bookings.all %}
-      <div class="ui raised segment confirm_prompt">
+      <div class="ui raised top attached segment confirm_prompt">
         <a href="{% url 'adventure_detail' pk=adventure.pk %}">
           <h2>{{ adventure.title }} - Booking Requested</h2>
           <h2>{{ adventure.date }}</h2>
         </a><br>
-        <a class="ui button red" href="{% url 'cancel_booking' pk=adventure.bookings.get.pk %}">Cancel Booking</a>
-        <a class="ui button blue" href="{% url 'confirm_booking' pk=adventure.bookings.get.pk %}">Confirm Booking</a>
       </div> 
+      <div class="ui bottom attached buttons">
+        <a class="ui cancel button" href="{% url 'cancel_booking' pk=adventure.bookings.get.pk %}">Cancel Booking</a>
+        <a class="ui button teal" href="{% url 'confirm_booking' pk=adventure.bookings.get.pk %}">Confirm Booking</a>
+      </div>
       {% endif %}{% endif %}
     {% endfor %}  
     {% for adventure in adventures %}
     {% if adventure.creator == request.user %}{% if not adventure.bookings.all %}
 
-      <div class="ui segment">
+      <div class="ui top attached segment">
           <a href="{% url 'adventure_detail' pk=adventure.pk %}">
             <h2>{{ adventure.title }}</h2>
             <h2>{{ adventure.date }}</h2>
           </a><br>
-          <a class="ui button red" href="{% url 'delete_post' pk=adventure.pk %}">Delete Post</a>
-          </div> 
+        </div> 
+        <a class="ui bottom attached cancel button" href="{% url 'delete_post' pk=adventure.pk %}">Delete Post</a>
+
       {% endif %} {% endif %}
       {% endfor %}
   </div>
-  <a
-    class="ui teal bottom attached button"
-    href="new_adventure">Create New Adventure
-</a>
+  <a class="ui huge fluid teal button" href="new_adventure">Create New Adventure</a>
 </section>
 {% endblock %}

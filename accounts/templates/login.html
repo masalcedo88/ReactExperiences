@@ -2,7 +2,14 @@
 {% block content %}
 
 {% if error %}
-  <p style="background-color:firebrick;">{{error}}</p>
+  <div class="ui icon message">
+  <i class="times icon"></i>
+  <div class="content">
+    <div class="header">
+      {{error}} - Try again. 
+    </div>
+  </div>
+</div>
 {% endif %}
 <section class="page_content">
   <div class="ui large header">Welcome back.</div>
@@ -17,7 +24,7 @@
       <label for="password">Password</label>
       <input type="password" name="password" maxlength="25" minlength="4" required>
     </p>
-    <button class="ui button" type="submit">Login</button>
+    <button class="ui teal fluid button" type="submit">Login</button>
     </form>
   </section>
 </section>
