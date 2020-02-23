@@ -7,15 +7,15 @@
   </div>
   <div class="ui bottom attached segment">
     {% for book in bookings %}
-      <div class="ui attached segment">
+      <div class="ui top attached segment">
+        {% if book.confirmed == False %}
+        <h3>Confirmation Pending</h3>
+        {% elif book.confirmed == True %}
+        <h3>Booking Confirmed</h3>
+        {% endif %}
         <a href="{% url 'adventure_detail' pk=book.adventure.pk %}">
           <h3>{{ book.adventure.title }} - {{book.adventure.date}}</h3>
         </a>
-        {% if book.confirmed == False %}
-        <p>Confirmation Pending</p>
-        {% elif book.confirmed == True %}
-        <p>Booking Confirmed</p>
-        {% endif %}
       </div>  
       <a class="ui bottom attached cancel button" href="{% url 'cancel_booking' pk=book.pk %}">Cancel Booking</a>
     {% endfor %}

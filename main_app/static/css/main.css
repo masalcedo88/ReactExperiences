@@ -119,6 +119,10 @@ nav {
   justify-content: flex-start;
   height: 100%;
 }
+#profile-picture {
+  margin: 10px 0px;
+  border: solid 1px black;
+}
 main {
   position: relative;
 }

@@ -9,9 +9,9 @@
     {% for adventure in adventures %}
       {% if adventure.creator == request.user %}{% if adventure.bookings.all %}
       <div class="ui raised top attached segment confirm_prompt">
-        <a href="{% url 'adventure_detail' pk=adventure.pk %}">
-          <h2>{{ adventure.title }} - Booking Requested</h2>
-          <h2>{{ adventure.date }}</h2>
+        <h3>Booking Requested</h3>
+        <a class="ui text" href="{% url 'adventure_detail' pk=adventure.pk %}">
+          <h3>{{ adventure.title }} - {{ adventure.date }}</h3>
         </a><br>
       </div> 
       <div class="ui bottom attached buttons">
@@ -24,9 +24,8 @@
     {% if adventure.creator == request.user %}{% if not adventure.bookings.all %}
 
       <div class="ui top attached segment">
-          <a href="{% url 'adventure_detail' pk=adventure.pk %}">
-            <h2>{{ adventure.title }}</h2>
-            <h2>{{ adventure.date }}</h2>
+          <a class="ui text" href="{% url 'adventure_detail' pk=adventure.pk %}">
+            <h3>{{ adventure.title }} - {{ adventure.date }}</h3>
           </a><br>
         </div> 
         <a class="ui bottom attached cancel button" href="{% url 'delete_post' pk=adventure.pk %}">Delete Post</a>
