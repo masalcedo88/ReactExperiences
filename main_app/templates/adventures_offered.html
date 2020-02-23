@@ -8,14 +8,13 @@
     <a class="item active" href="adventures_offered">Adventures I'm Offering</a>
     <a class="item" href="my_adventures">Adventures I've Booked</a>
   </div>
-  BOOKED
   <div class="ui bottom attached segment">
     {% for adventure in adventures %}
       {% if adventure.creator == request.user %}{% if adventure.bookings.all %}
       <div class="ui raised segment confirm_prompt">
         <a href="{% url 'adventure_detail' pk=adventure.pk %}">
-          <h2>{{ adventure.title }}</h2>
-          <h2>{{ adventure.date }}</h2>
+          <h2>{{ adventure.title }}</h2><h3 class="red">Booked</h3>
+          <h5>{{ adventure.date }}</h5>
         </a><br>
         <a class="ui button red" href="{% url 'cancel_booking' pk=adventure.bookings.get.pk %}">Cancel Booking</a>
         {% if adventure.bookings.get.confirmed == False %}
