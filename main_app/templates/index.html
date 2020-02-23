@@ -8,15 +8,15 @@
   <div class="ui centered cards">
     {% for adventure in adventures %} {% if not adventure.bookings.all %}
       <div class="ui card">
-        <div class="image hover-zoom">
+        <a class="image hover_zoom" href="{% url 'adventure_detail' pk=adventure.pk %}">
           <img src="{{ adventure.picture.url }}" />
-        </div>
-        <div class="content card_info">
+        </a>
+        <a class="content card_info" href="{% url 'adventure_detail' pk=adventure.pk %}">
           <div class="header">{{adventure.title}}</div>
-          <div class="meta">
-            <span class="date">{{adventure.date}}</span>
+          <div class="description">
+            <span class="date">{{adventure.date}} - ${{adventure.price}}</span>
           </div>
-        </div>
+        </a>
         <div class="ui bottom attached button go_detail">
           <a href="{% url 'adventure_detail' pk=adventure.pk %}">
             See More
