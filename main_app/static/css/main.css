@@ -9,8 +9,11 @@
   --text_header_dark: #190036;
   --semantic_blue: rgb(41, 109, 207);
 }
+
+/* Styles */
+
 body {
-  background-color: var(--bg_dark);
+  background-color: var(--bg_light);
 }
 header {
   height: 100px;
@@ -27,6 +30,12 @@ header a {
 }
 #top_menu {
   border-radius: 5px 5px 0px 0px;
+  margin: 0px;
+}
+#top_menu_mini {
+  display: none;
+  height: 0px;
+  border-radius: 0px;
   margin: 0px;
 }
 nav {
@@ -62,7 +71,7 @@ nav {
   background: var(--bg_light);
   max-width: 1300px;
   margin: 0 auto;
-  padding: 10px 10px 0px 10px;
+  padding: 20px 10px 10px;
   border-left: 1px solid var(--tab_label);
   border-right: 1px solid var(--tab_label);
   border-bottom: 1px solid var(--tab_label);
@@ -86,9 +95,6 @@ nav {
   transition: transform 0.75s ease;
   transform: scale(1.125);
 }
-.meta {
-  /* background-color: var(--bg_dark); */
-}
 .ui.button.go_detail {
   background-color: var(--bg_dark);
 }
@@ -98,7 +104,6 @@ nav {
 .card_info a {
   color: salmon;
 }
-
 #welcome {
   color: var(--text_contrast);
   display: flex;
@@ -115,8 +120,8 @@ footer {
   height: 25px;
   width: 100%;
   padding: 0px 10px;
-  color: var(--text_contrast);
-  background-color: var(--bg_dark);
+  color: var(--bg_light);
+  background-color: var(--semantic_blue);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -141,9 +146,15 @@ footer p {
     height: 0;
   }
   #top_menu {
-    border-radius: 0px;
+    display: none;
+    border-radius: 0;
+  }
+  #top_menu_mini {
+    display: flex;
+    border-radius: 0;
   }
   .page_content {
     border-radius: 0px;
+    border: none;
   }
 }

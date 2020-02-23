@@ -5,19 +5,19 @@
     <div class="ui large header">Your Account</div>
   </div>
   <div>
-    <div>
+    <div class="ui image">
         <img id="profile-picture" src=" {{ user.profile.picture.url }}" alt="profile picture">
     </div>
     <br>
     <!-- # WORKING HERE -->
     <a class="ui button small" href="{% url 'update_photo' %}">Update Image</a>
 </div>
-<div class="full-name">
+<div class="user_info">
     <h4>Username: {{ user.username }}</h4>
     <h4>Name: {{ user.first_name }} {{ user.last_name }}</h4>
     <h4>Email: {{ user.email }}</h4>
 </div>
-  <div class="ui buttons fluid edit-buttons">
+  <div class="ui buttons fluid">
     <a class="ui button" href="accounts/edit_info">Update Profile</a>
     <br>
     <a class="ui button" href="accounts/change_password">Update Password</a>
