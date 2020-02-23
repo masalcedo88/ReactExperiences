@@ -12,7 +12,7 @@
         <h3>Booking Requested</h3>
         <a class="ui text" href="{% url 'adventure_detail' pk=adventure.pk %}">
           <h3>{{ adventure.title }} - {{ adventure.date }}</h3>
-        </a><br>
+        </a>
       </div> 
       <div class="ui bottom attached buttons">
         <a class="ui cancel button" href="{% url 'cancel_booking' pk=adventure.bookings.get.pk %}">Cancel Booking</a>
@@ -22,17 +22,15 @@
     {% endfor %}  
     {% for adventure in adventures %}
     {% if adventure.creator == request.user %}{% if not adventure.bookings.all %}
-
       <div class="ui top attached segment">
-          <a class="ui text" href="{% url 'adventure_detail' pk=adventure.pk %}">
-            <h3>{{ adventure.title }} - {{ adventure.date }}</h3>
-          </a><br>
-        </div> 
-        <a class="ui bottom attached cancel button" href="{% url 'delete_post' pk=adventure.pk %}">Delete Post</a>
-
-      {% endif %} {% endif %}
-      {% endfor %}
+        <a class="ui text" href="{% url 'adventure_detail' pk=adventure.pk %}">
+          <h3>{{ adventure.title }} - {{ adventure.date }}</h3>
+        </a>
+      </div> 
+      <a class="ui bottom attached cancel button" href="{% url 'delete_post' pk=adventure.pk %}">Delete Post</a>
+    {% endif %} {% endif %}
+    {% endfor %}
+    <a id="new_adventure" class="ui huge fluid teal button" href="new_adventure">Create New Adventure</a>
   </div>
-  <a class="ui huge fluid teal button" href="new_adventure">Create New Adventure</a>
 </section>
 {% endblock %}

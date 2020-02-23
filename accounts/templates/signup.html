@@ -5,36 +5,39 @@
     <p style="background-color: firebrick;">{{error}}</p>
 {% endif %}
 <section class="page_content">
-  <div class="ui large header">Let's get you signed up.</div>
-  <section class="ui form">
-    <form action="{% url 'signup' %}" method="POST" class="user-form">
-    {% csrf_token %}
-    <p>
-      <label for="first_name">First Name</label>
-      <input type="text" name="first_name"  maxlength="25" minlength="2" required>
-    </p>
-    <p>
-      <label for="last_name">Last Name</label>
-      <input type="text" name="last_name"  maxlength="25" minlength="2" required>
-    </p>
-    <p>
-      <label for="email">Email</label>
-      <input type="email" name="email"  maxlength="25" minlength="2" required>
-    </p>
-    <p>
-      <label for="username">Username</label>
-      <input type="text" name="username"  maxlength="25" minlength="2" required>
-    </p>
-    <p>
-      <label for="password">Password</label>
-      <input type="password" name="password"  maxlength="25" minlength="4" required>
-    </p>
-    <p>
-      <label for="password2">Confirm Password</label>
-      <input type="password" name="password2"  maxlength="25" minlength="4" required>
-    </p>
-    <button class="ui button" type="submit"> Sign Up </button>
-    </form>
+  <form action="{% url 'signup' %}" method="POST" class="user-form">
+  {% csrf_token %}
+  <div class="ui top attached segment">
+    <div class="ui large header">Let's get you signed up.</div>
+    <section class="ui form">
+      <p>
+        <label for="first_name">First Name</label>
+        <input type="text" name="first_name"  maxlength="25" minlength="2" required>
+      </p>
+      <p>
+        <label for="last_name">Last Name</label>
+        <input type="text" name="last_name"  maxlength="25" minlength="2" required>
+      </p>
+      <p>
+        <label for="email">Email</label>
+        <input type="email" name="email"  maxlength="25" minlength="2" required>
+      </p>
+      <p>
+        <label for="username">Username</label>
+        <input type="text" name="username"  maxlength="25" minlength="2" required>
+      </p>
+      <p>
+        <label for="password">Password</label>
+        <input type="password" name="password"  maxlength="25" minlength="4" required>
+      </p>
+      <p>
+        <label for="password2">Confirm Password</label>
+        <input type="password" name="password2"  maxlength="25" minlength="4" required>
+      </p>
+      
+    </div>
+    <button class="ui bottom attached fluid teal button" type="submit"> Sign Up </button>
+  </form>
 </section>
 
 </section>
