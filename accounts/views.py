@@ -5,7 +5,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm, ProfileUpdateForm
-
+from .models import Profile
 
 
 # Create your views here.
@@ -32,8 +32,9 @@ def signup(request):
           password=password, 
           first_name=first_name, 
           last_name=last_name)
-        user.save()
-        return redirect('/')
+          user.save()
+          profile = Profile.objects.create(user=user)
+          return redirect('/')
     else:
       context = {'error':'Passwords do not match'}
       return render(request, 'signup.html', context)
@@ -42,24 +43,6 @@ def signup(request):
 
 @login_required
 def edit_info(request):
-  # Marco's EDIT INFO
-  # if request.method == "POST":
-  #   first_name = request.POST['first_name']
-  #   last_name = request.POST['last_name']
-  #   email = request.POST['email']
-  #   interests = request.POST['interests']
-  #   picture = request.FILES['picture']
-  #   user = User.objects.get(pk=request.user.pk)
-
-  #   user.first_name = first_name
-  #   user.last_name = last_name
-  #   user.email = email
-  #   user.profile.interests = interests
-  #   user.profile.picture = picture
-  #   user.save()
-  #   return redirect('profile')
-
-  # Eric's EDIT INFO
   user = request.user
   form = UserForm(instance=user)
   profile = ProfileUpdateForm(instance=user.profile)
@@ -78,47 +61,6 @@ def edit_info(request):
   context = {'form':form, 'profile':profile}
   # else:
   return render(request, 'edit_info.html', context)
-
-  # Eric's EDIT INFO 2 
-  # if request.method == "POST":
-  #   form = UserForm(request.POST, request.FILES)
-  #   if form.is_valid():
-  #     update = form.save(commit=False)
-  #     # update.creator = request.user
-  #     update.save()
-  #     print('Saving PROFILE update')
-  #     return redirect('profile.html')
-  # else:
-  #   form = UserForm()
-
-  # context = {'form':form}
-  # # else:
-  # return render(request, 'edit_info.html')
-
-# WORKING HERE
-# @login_required
-# def update_profile(request):
-#   profile = ProfileUpdateForm()
-
-#   context = {
-#     'profile': profile
-#   } 
-
-#   # def profile(request):
-#   #   return render(request, 'profile.html')
-
-
-#   profile = request.user.profile
-#   profile.image = request.FILES['picture']
-#   profile.save()
-#   print(profile)
-#   return redirect('profile')
-
-  # if request.method == 'POST':
-  #   form = PictureNew(request.POST, request.FILES)
-  #   if form.is_valid()
-
-# WORKING HERE
 
 def login(request):
   if request.method == 'POST':
