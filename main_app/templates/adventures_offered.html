@@ -28,7 +28,6 @@
         <a class="ui text" href="{% url 'adventure_detail' pk=adventure.pk %}">
           <h3>{{ adventure.title }} - {{ adventure.date }}</h3>
         </a>
-        <div class="{{adventure.pk}}">{{adventure.pk}}</div>
       </div> 
       <a id="{{adventure.pk}}" class="ui bottom attached delete button">Delete Adventure</a>
     {% endif %} {% endif %}
