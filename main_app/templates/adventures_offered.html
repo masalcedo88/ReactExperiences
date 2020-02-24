@@ -28,11 +28,13 @@
         <a class="ui text" href="{% url 'adventure_detail' pk=adventure.pk %}">
           <h3>{{ adventure.title }} - {{ adventure.date }}</h3>
         </a>
+        <div class="{{adventure.pk}}">{{adventure.pk}}</div>
       </div> 
-      <a class="ui bottom attached cancel button" href="{% url 'delete_post' pk=adventure.pk %}">Delete Post</a>
+      <a id="{{adventure.pk}}" class="ui bottom attached delete button">Delete Adventure</a>
     {% endif %} {% endif %}
     {% endfor %}
     <a id="new_adventure" class="ui huge fluid teal button" href="new_adventure">Create New Adventure</a>
   </div>
 </section>
+
 {% endblock %}
