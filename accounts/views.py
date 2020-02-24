@@ -4,7 +4,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .forms import UserForm
+from .forms import UserForm, ProfileUpdateForm
 
 
 
@@ -62,16 +62,38 @@ def edit_info(request):
   # Eric's EDIT INFO
   user = request.user
   form = UserForm(instance=user)
+  profile = ProfileUpdateForm(instance=user.profile)
   
   if request.method == "POST":
     form = UserForm(request.POST, request.FILES, instance=user)
     if form.is_valid():
-      print('Saving PROFILE update')
+      print('Saving USER update')
       form.save()
+    profile = ProfileUpdateForm(request.POST, request.FILES, instance=user.profile)
+    if profile.is_valid():
+      print('Saving PROFILE update')
+      profile.save()
+      return redirect('profile')
   
-  context = {'form':form}
+  context = {'form':form, 'profile':profile}
   # else:
-  return render(request, 'edit_info.html')
+  return render(request, 'edit_info.html', context)
+
+  # Eric's EDIT INFO 2 
+  # if request.method == "POST":
+  #   form = UserForm(request.POST, request.FILES)
+  #   if form.is_valid():
+  #     update = form.save(commit=False)
+  #     # update.creator = request.user
+  #     update.save()
+  #     print('Saving PROFILE update')
+  #     return redirect('profile.html')
+  # else:
+  #   form = UserForm()
+
+  # context = {'form':form}
+  # # else:
+  # return render(request, 'edit_info.html')
 
 # WORKING HERE
 # @login_required

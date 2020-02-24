@@ -29,7 +29,7 @@ def adventure_create(request):
       adventure = form.save(commit=False)
       adventure.creator = request.user
       adventure.save()
-      return redirect('adventures_list')
+      return redirect('adventures_offered')
   else:
     form = AdventureForm()
   context = {'form': form, 'header': "Add New Adventure"}
@@ -62,9 +62,9 @@ def confirm_booking(request, pk):
 @login_required
 def cancel_booking(request, pk):
   Booking.objects.get(id=pk).delete()
-  return redirect('adventures_list')
+  return redirect('adventures_offered')
 
 @login_required
 def delete_post(request, pk):
   Adventure.objects.get(id=pk).delete()
-  return redirect('adventures_list')
+  return redirect('adventures_offered')

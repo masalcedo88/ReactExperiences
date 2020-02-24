@@ -1,5 +1,4 @@
 {% load static %}
-
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -28,21 +27,19 @@
             <a href="/"><i class="globe icon"></i>adventureBUDDY</a>
           </h1>
         </header>
-
         {% if user.is_authenticated %}
-
         <div id="top_menu" class="ui large inverted blue menu">
           <div class="medium header item">Welcome, {{ user.first_name }}!</div>
           <div class="right menu">
             <a class="item" href="/my_adventures"><i class="globe icon"></i>My Adventures</a>
             <a class="item" href="/profile"><i class="user icon"></i>Profile</a>
-            <a class="item" href="/accounts/logout"><i class="sign-out icon"></i>Logout</a>
+            <a class="logout item" href="#"><i class="sign-out icon"></i>Logout</a>
           </div>
         </div>
         <div id="top_menu_mini" class="ui inverted blue three item menu">
           <a class="item" href="/my_adventures"><i class="globe icon"></i>My Adventures</a>
           <a class="item" href="/profile"><i class="user icon"></i>{{user.first_name}}</a>
-          <a class="item" href="/accounts/logout"><i class="sign-out icon"></i>Logout</a>
+          <a class="logout item" href="#"><i class="sign-out icon"></i>Logout</a>
         </div>  
         {% else %}
         <div id="top_menu" class="ui large inverted blue menu">
@@ -57,17 +54,14 @@
             <a class="item" href="/accounts/login"><i class="sign-in icon"></i>Log In</a>
         </div>  
         {% endif %}
-
-
       </section>
-
       {% block content %} {% endblock %}
       <a href="about">
       <footer>
         <p>GA SEI7</p>
         <p>Laitala & Rueter & Salcedo</p>
       </footer>
-    </a>
+      </a>
     </main>
   </body>
 </html>
