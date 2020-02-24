@@ -6,7 +6,7 @@
         <form  class="ui form" method="POST" class="adventure-form" enctype="multipart/form-data">
             {% csrf_token %}
             {{form.as_p}}
-            {{AdventureFormNew.form}}
+            <!-- {{AdventureFormNew.form}} -->
             <button class="ui button fluid" type="submit">Save</button>
         </form>
     </section>

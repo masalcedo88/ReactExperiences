@@ -6,8 +6,10 @@
 {% endif %}
 
 <section class="form-section">
-    <form action="{% url 'edit_info' %}" method="POST" class="user-form">
+    <!-- <form action="{% url 'edit_info' %}" method="POST" class="user-form" enctype="multipart/form-data"> -->
+    <form method="POST" class="user-form" enctype="multipart/form-data">
     {% csrf_token %}
+    <!-- {{form.as_p}} -->
     <p>
         <label for="first_name">First Name</label>
         <input value="{{ user.first_name }}" type="text" name="first_name"  maxlength="25" minlength="2" required>
@@ -19,6 +21,14 @@
     <p>
         <label for="email">Email</label>
         <input value="{{ user.email }}" type="email" name="email"  maxlength="25" minlength="2" required>
+    </p>
+    <p>
+        <label for="picture">Picture</label>
+        <input type="file" value="{{ user.profile.picture }}" type="picture" name="picture">
+    </p>
+    <p>
+        <label for="interests">Interests</label>
+        <input value="{{ user.profile.interests }}" type="interests" name="interests">
     </p>
     <button type="submit"> Update Info </button>
     </form>

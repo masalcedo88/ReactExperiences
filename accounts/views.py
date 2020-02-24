@@ -4,6 +4,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from .forms import UserForm
 
 
 
@@ -41,27 +42,60 @@ def signup(request):
 
 @login_required
 def edit_info(request):
+  # Marco's EDIT INFO
+  # if request.method == "POST":
+  #   first_name = request.POST['first_name']
+  #   last_name = request.POST['last_name']
+  #   email = request.POST['email']
+  #   interests = request.POST['interests']
+  #   picture = request.FILES['picture']
+  #   user = User.objects.get(pk=request.user.pk)
+
+  #   user.first_name = first_name
+  #   user.last_name = last_name
+  #   user.email = email
+  #   user.profile.interests = interests
+  #   user.profile.picture = picture
+  #   user.save()
+  #   return redirect('profile')
+
+  # Eric's EDIT INFO
+  user = request.user
+  form = UserForm(instance=user)
+  
   if request.method == "POST":
-    first_name = request.POST['first_name']
-    last_name = request.POST['last_name']
-    email = request.POST['email']
-    user = User.objects.get(pk=request.user.pk)
-    user.first_name = first_name
-    user.last_name = last_name
-    user.email = email
-    user.save()
-    return redirect('profile')
-  else:
-    return render(request, 'edit_info.html')
+    form = UserForm(request.POST, request.FILES, instance=user)
+    if form.is_valid():
+      print('Saving PROFILE update')
+      form.save()
+  
+  context = {'form':form}
+  # else:
+  return render(request, 'edit_info.html')
 
 # WORKING HERE
-@login_required
-def update_picture(request):
-  profile = request.user.profile
-  profile.image = request.FILES['Photo']
-  profile.save()
-  print(profile)
-  return redirect('profile')
+# @login_required
+# def update_profile(request):
+#   profile = ProfileUpdateForm()
+
+#   context = {
+#     'profile': profile
+#   } 
+
+#   # def profile(request):
+#   #   return render(request, 'profile.html')
+
+
+#   profile = request.user.profile
+#   profile.image = request.FILES['picture']
+#   profile.save()
+#   print(profile)
+#   return redirect('profile')
+
+  # if request.method == 'POST':
+  #   form = PictureNew(request.POST, request.FILES)
+  #   if form.is_valid()
+
 # WORKING HERE
 
 def login(request):

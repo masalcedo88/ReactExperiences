@@ -9,16 +9,18 @@
   </div>
   <div>
     <div>
-        <img id="profile-picture" src=" {{ user.profile.picture.url }}" alt="profile picture">
+        <img id="profile-picture" src=" {{ request.user.profile.picture.url }}" alt="profile picture">
     </div>
     <br>
     <!-- # WORKING HERE -->
-    <a class="ui button small" href="{% url 'update_photo' %}">Update Image</a>
+    <!-- <a class="ui button small" href="accounts/update_profile">Update Image</a> -->
 </div>
 <div class="full-name">
     <h4>Username: {{ user.username }}</h4>
     <h4>Name: {{ user.first_name }} {{ user.last_name }}</h4>
     <h4>Email: {{ user.email }}</h4>
+    <h4>Picture: {{ user.profile.picture.url }}</h4>
+    <h4>Interests: {{ user.profile.interests }}</h4>
 </div>
   <div class="ui buttons fluid edit-buttons">
     <a class="ui button" href="accounts/edit_info">Update Profile</a>
