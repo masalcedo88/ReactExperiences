@@ -14,6 +14,7 @@
     <div class="ui divider"></div>
     <div class="ui text">{{ adventure.description }}</div>
     <div class="ui divider"></div>
+    <div id="location" class="ui header medium">{{adventure.location}}</div>
     <div id="detail_line" class="ui header medium">{{adventure.date}} - ${{adventure.price}}</div>
   </div>
   {% if not adventure.bookings.all %}
