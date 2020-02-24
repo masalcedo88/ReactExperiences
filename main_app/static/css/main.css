@@ -125,10 +125,18 @@ nav {
 .card_info a {
   color: salmon;
 }
-.bottom.cancel,
-.bottom .cancel {
-  color: white;
+.cancel.button,
+.delete.button {
   background: var(--bg_cancel_btn);
+  color: white;
+}
+.modal_btn {
+  width: 120px;
+}
+.modal_btn_group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #welcome {
   color: var(--text_contrast);
