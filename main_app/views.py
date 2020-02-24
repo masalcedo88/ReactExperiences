@@ -29,7 +29,7 @@ def adventure_create(request):
       adventure = form.save(commit=False)
       adventure.creator = request.user
       adventure.save()
-      return redirect('profile')
+      return redirect('adventures_list')
   else:
     form = AdventureForm()
   context = {'form': form, 'header': "Add New Adventure"}
