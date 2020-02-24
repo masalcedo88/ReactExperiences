@@ -154,6 +154,10 @@ nav {
   align-items: center;
   margin: 0px;
 }
+
+#location {
+  margin-top: 0px;
+}
 #detail_line {
   margin-top: 0px;
 }
