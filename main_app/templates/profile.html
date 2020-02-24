@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page_content">
+  <div class="ui top attached segment">
+    <div class="profile-nav">
+      <div class="ui large header">Your Account</div>
+    </div>
+      <div>User Image:</div>
+      <img class="ui image" id="profile-picture" src=" {{ user.profile.picture.url }}" alt="profile picture">
+      <!-- # WORKING HERE -->
+    <div class="ui text user_info">
+      <div>Username: {{ user.username }}</div>
+      <div>Name: {{ user.first_name }} {{ user.last_name }}</div>
+      <div>Email: {{ user.email }}</div>
+    </div>
+  </div>
+  <div class="ui bottom attached inverted teal three item menu">
+    <a class="ui item button small" href="{% url 'update_photo' %}">Update Image</a>
+    <a class="ui item teal button" href="accounts/edit_info">Update Account</a>
+    <a class="ui item teal button" href="accounts/change_password">Change Password</a>
+  </div>
+</section>
+{% endblock %}

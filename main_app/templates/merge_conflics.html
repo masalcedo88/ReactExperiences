@@ -1,0 +1,11 @@
+<<<<<<< HEAD
+      <div class="ui raised segment confirm_prompt">
+        <a href="{% url 'adventure_detail' pk=adventure.pk %}">
+          <h2>{{ adventure.title }}</h2><h3 class="red">Booked</h3>
+          <h5>{{ adventure.date }}</h5>
+        </a><br>
+        <a class="ui button red" href="{% url 'cancel_booking' pk=adventure.bookings.get.pk %}">Cancel Booking</a>
+        {% if adventure.bookings.get.confirmed == False %}
+        <a class="ui button blue" href="{% url 'confirm_booking' pk=adventure.bookings.get.pk %}">Confirm Booking</a>
+        {% endif %}
+=======

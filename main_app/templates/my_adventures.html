@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page_content">
+  <div class="ui top attached two item menu">
+    <a class="item active" href="adventures_offered">Adventures I'm Offering</a>
+    <a class="item" href="my_adventures">Adventures I've Booked</a>
+  </div>
+  <div class="ui bottom attached segment">
+    {% if not bookings.all %}
+    <div class="ui top attached center aligned segment">
+      <h3 class="ui header">You don't have any booked adventures yet.</h3>
+    </div>
+    <a class="ui bottom attached fluid teal button" href="/">Find your next adventure!</a>
+    {% else %}
+    {% for book in bookings %}
+      <div class="ui top attached segment">
+        {% if book.confirmed == False %}
+        <h3>Confirmation Pending</h3>
+        {% elif book.confirmed == True %}
+        <h3>Booking Confirmed</h3>
+        {% endif %}
+        <a href="{% url 'adventure_detail' pk=book.adventure.pk %}">
+          <h3>{{ book.adventure.title }} - {{book.adventure.date}}</h3>
+        </a>
+      </div>  
+      <a class="ui bottom attached cancel button" href="{% url 'cancel_booking' pk=book.pk %}">Cancel Booking</a>
+    {% endfor %}
+    {% endif %}
+  </div>
+{% endblock %}
