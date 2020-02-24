@@ -4,7 +4,8 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-
+from .forms import UserForm, ProfileUpdateForm
+from .models import Profile
 
 
 # Create your views here.
@@ -31,8 +32,9 @@ def signup(request):
           password=password, 
           first_name=first_name, 
           last_name=last_name)
-        user.save()
-        return redirect('/')
+          user.save()
+          profile = Profile.objects.create(user=user)
+          return redirect('/')
     else:
       context = {'error':'Passwords do not match'}
       return render(request, 'signup.html', context)
@@ -41,28 +43,24 @@ def signup(request):
 
 @login_required
 def edit_info(request):
+  user = request.user
+  form = UserForm(instance=user)
+  profile = ProfileUpdateForm(instance=user.profile)
+  
   if request.method == "POST":
-    first_name = request.POST['first_name']
-    last_name = request.POST['last_name']
-    email = request.POST['email']
-    user = User.objects.get(pk=request.user.pk)
-    user.first_name = first_name
-    user.last_name = last_name
-    user.email = email
-    user.save()
-    return redirect('profile')
-  else:
-    return render(request, 'edit_info.html')
-
-# WORKING HERE
-@login_required
-def update_picture(request):
-  profile = request.user.profile
-  profile.image = request.FILES['Photo']
-  profile.save()
-  print(profile)
-  return redirect('profile')
-# WORKING HERE
+    form = UserForm(request.POST, request.FILES, instance=user)
+    if form.is_valid():
+      print('Saving USER update')
+      form.save()
+    profile = ProfileUpdateForm(request.POST, request.FILES, instance=user.profile)
+    if profile.is_valid():
+      print('Saving PROFILE update')
+      profile.save()
+      return redirect('profile')
+  
+  context = {'form':form, 'profile':profile}
+  # else:
+  return render(request, 'edit_info.html', context)
 
 def login(request):
   if request.method == 'POST':
