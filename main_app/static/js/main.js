@@ -1,4 +1,4 @@
-//——
+//—— DOM manipulators ——————————————————————//
 const deleter = val => {
   $("body").append(`
     <div class="ui basic modal deleteModal">
