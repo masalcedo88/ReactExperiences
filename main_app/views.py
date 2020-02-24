@@ -10,6 +10,9 @@ def index(request):
   adventures = Adventure.objects.all()
   return render(request, 'index.html', {'adventures': adventures})
 
+def about(request):
+  return render(request, 'about.html')
+
 def adventure_detail(request, pk):
   adventure = Adventure.objects.get(id=pk)
   return render(request, 'adventure_detail.html', {'adventure': adventure})

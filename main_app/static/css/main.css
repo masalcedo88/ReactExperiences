@@ -1,7 +1,10 @@
+/* Variables */
+
 :root {
   --bg_light: #f0f0f0;
   --bg_dark: #06052c;
   --bg_dark_btn: #00b399;
+  --bg_cancel_btn: #8b0000;
   --tab_label: #296dcf;
   --tab_label_active: #150259;
   --text_contrast: #ff6356;
@@ -9,6 +12,9 @@
   --text_header_dark: #190036;
   --semantic_blue: rgb(41, 109, 207);
 }
+
+/* Styles */
+
 body {
   background-color: var(--bg_light);
 }
@@ -18,12 +24,39 @@ header {
   align-items: flex-end;
   justify-content: flex-start;
 }
+header a {
+  color: var(--semantic_blue);
+}
+main {
+  position: relative;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  height: 25px;
+  width: 100%;
+  padding: 0px 10px;
+  color: var(--bg_light);
+  background-color: var(--semantic_blue);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+footer p {
+  line-height: 25px;
+}
 .top {
   margin: 0 auto;
   max-width: 1300px;
 }
 #top_menu {
   border-radius: 5px 5px 0px 0px;
+  margin: 0px;
+}
+#top_menu_mini {
+  display: none;
+  height: 0px;
+  border-radius: 0px;
   margin: 0px;
 }
 nav {
@@ -44,9 +77,8 @@ nav {
 }
 .detail_image {
   background-color: var(--bg_dark);
-  background-position: center;
-  background-size: cover;
   height: 400px;
+  object-fit: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,7 +92,7 @@ nav {
   background: var(--bg_light);
   max-width: 1300px;
   margin: 0 auto;
-  padding: 10px 10px;
+  padding: 20px 10px 10px;
   border-left: 1px solid var(--tab_label);
   border-right: 1px solid var(--tab_label);
   border-bottom: 1px solid var(--tab_label);
@@ -71,31 +103,32 @@ nav {
   display: flex;
   justify-content: space-between;
 }
-.hover-zoom {
+.hover_zoom {
   height: 200px;
   overflow: hidden;
 }
-.hover-zoom img {
+.hover_zoom img {
   height: 100% !important;
   width: 100%;
   object-fit: cover;
 }
-.hover-zoom:hover img {
+.hover_zoom:hover img {
   transition: transform 0.75s ease;
   transform: scale(1.125);
 }
-
 .ui.button.go_detail {
   background-color: var(--bg_dark);
 }
 .ui.button.go_detail a {
   color: var(--text_contrast);
 }
-.card_info {
-  background-color: var(--bg_dark);
-}
 .card_info a {
   color: salmon;
+}
+.bottom.cancel,
+.bottom .cancel {
+  color: white;
+  background: var(--bg_cancel_btn);
 }
 #welcome {
   color: var(--text_contrast);
@@ -104,23 +137,35 @@ nav {
   justify-content: flex-start;
   height: 100%;
 }
-main {
-  position: relative;
+#profile-picture {
+  margin: 10px 0px;
+  border: solid 1px var(--bg_dark);
 }
-footer {
-  display: flex;
-  justify-content: space-between;
-  height: 25px;
-  width: 100%;
-  padding: 0px 10px;
-  color: var(--text_contrast);
-  background-color: var(--bg_dark);
-  position: fixed;
-  bottom: 0;
-  left: 0;
+#profile_line {
+  display: inline-flex;
+  align-items: center;
+  margin: 0px;
 }
-footer p {
-  line-height: 25px;
+#detail_line {
+  margin-top: 0px;
+}
+#new_adventure {
+  margin-top: 12px;
+}
+.avatar_frame {
+  max-height: 100px;
+  max-width: 100px;
+  overflow: hidden;
+  margin-left: 10px;
+}
+.about {
+  margin: 0px 0px;
+}
+th {
+  font-size: 18px;
+}
+h3 {
+  margin: 0px;
 }
 @media only screen and (max-width: 500px) {
   header {
@@ -139,9 +184,15 @@ footer p {
     height: 0;
   }
   #top_menu {
-    border-radius: 0px;
+    display: none;
+    border-radius: 0;
+  }
+  #top_menu_mini {
+    display: flex;
+    border-radius: 0;
   }
   .page_content {
     border-radius: 0px;
+    border: none;
   }
 }

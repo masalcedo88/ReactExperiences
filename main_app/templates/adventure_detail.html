@@ -1,28 +1,23 @@
 {% extends 'base.html' %} {% block content %}
 <div class="detail_image">
-  <img src="{{ adventure.picture.url }}" alt="" />
+  <img src="{{ adventure.picture.url }}" alt="adventure image"/>
 </div>
 <section class="page_content">
-  <section class="adventure-header">
-    <section class="adventure-info">
-      <div class="ui header large">
-        {{ adventure.title }}
+  <div class="ui top attached segment">
+    <div class="ui header large">{{ adventure.title }}</div>
+    <div id="profile_line" class="ui header medium profile_line">
+      Presented by {{ adventure.creator.first_name }} {{adventure.creator.last_name }}
+      <div class="avatar_frame">
+        <img class="ui avatar image" src="{{ adventure.creator.profile.picture.url }}" alt="host avatar"/>
       </div>
-      <p>
-        Presented by {{ adventure.creator.first_name }} {{adventure.creator.last_name }}
-      </p>
-      <div class="ui inverted segment adv_detail_desc">
-        <h3>Adventure No. {{ adventure.pk }}</h5>
-        <p>{{ adventure.description }}</p>
-        {% if not adventure.bookings.all %}
-        <a
-          class="ui right button primary"
-          href="{% url 'book_adventure' pk=adventure.pk %}"
-          >Book this adventure!</a
-        >
-        {% endif %}
-      </div>
-    </section>
-  </section>
+    </div>
+    <div class="ui divider"></div>
+    <div class="ui text">{{ adventure.description }}</div>
+    <div class="ui divider"></div>
+    <div id="detail_line" class="ui header medium">{{adventure.date}} - ${{adventure.price}}</div>
+  </div>
+  {% if not adventure.bookings.all %}
+    <a class="ui bottom attached button teal" href="{% url 'book_adventure' pk=adventure.pk %}">Book this adventure!</a>
+  {% endif %}
 </section>
 {% endblock %}
