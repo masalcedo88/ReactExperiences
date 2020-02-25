@@ -2,7 +2,7 @@
 
 adventureBUDDY is a service that connects adventurers with adventures. Users can search and sign up for adventures with a new buddy. Buddies can monetize their adventure knowledge by creating events for other users to join.
 
-[adventureBUDDY on Heroku](adventurebuddy.herokuapp.com)
+[adventureBUDDY on Heroku](https://adventurebuddy.herokuapp.com)
 
 
 adventureBUDDY is created by
