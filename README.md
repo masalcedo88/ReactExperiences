@@ -1,3 +1,11 @@
+# Notice
+
+This repo is the next chapter of project 'adventureBuddy' for more information on 'adventureBuddy' please scroll down or visit [adventureBUDDY on Heroku](https://adventurebuddy.herokuapp.com).
+
+# React Experiences
+
+ReacExperiences 
+
 # adventureBuddy
 
 adventureBUDDY is a service that connects adventurers with adventures. Users can search and sign up for adventures with a new buddy. Buddies can monetize their adventure knowledge by creating events for other users to join.
